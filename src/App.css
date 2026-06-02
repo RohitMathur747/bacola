@@ -22,6 +22,28 @@ body {
   }
 }
 
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc !important;
+  border-radius: 4px !important;
+}
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+nav .navPart1 {
+  max-width: 20%;
+  flex: 0 0 20%;
+}
+
+nav .navPart2 {
+  max-width: 80%;
+  flex: 0 0 80%;
+}
+
 .headerWrapper .top-strip {
   padding: 8px 0px;
   background-color: #233a95;
@@ -78,7 +100,7 @@ body {
   opacity: 0.7;
 }
 
-header .headerSearch {
+.headerSearch {
   width: 60%;
   height: 60px;
   background-color: #f3f4f7;
@@ -86,7 +108,7 @@ header .headerSearch {
   position: relative;
 }
 
-header .headerSearch input {
+.headerSearch input {
   background: transparent;
   outline: none;
   font-size: 18px;
@@ -97,7 +119,7 @@ header .headerSearch input {
   padding: 0px 20px !important;
 }
 
-header .headerSearch button {
+.headerSearch button {
   position: absolute;
   right: 15px;
   top: 10px;
@@ -109,7 +131,7 @@ header .headerSearch button {
   border: none !important;
 }
 
-header .headerSearch button svg {
+.headerSearch button svg {
   font-size: 25px;
 }
 
@@ -157,14 +179,16 @@ header .headerSearch button svg {
 }
 
 nav .allCatTab {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff !important;
   background-color: #2bbef9;
-  padding: 15px 20px !important;
+  padding: 10px 15px !important;
   border-radius: 30px !important;
 }
 
 nav .allCatTab {
   color: #fff !important;
-  margin-right: 10px;
 }
 
 nav .allCatTab:hover {
@@ -187,9 +211,64 @@ nav .allCatTab .icon2 svg {
 nav .navPart2 ul {
   margin-bottom: 0px;
 }
+
 nav .navPart2 ul li a {
-  font-size: 16px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav .navPart2 ul li a button {
+  font-size: 14px;
   text-decoration: none;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.8) !important;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  transition: all 0.2s ease-in-out;
+}
+
+nav .navPart2 ul li a:hover {
+  background: #f0faff;
+  color: #2bbef9 !important;
+  border-radius: 25px;
+}
+
+.locationModel .MuiPaper-elevation {
+  padding: 25px;
+  position: relative;
+}
+
+.locationModel .countryList {
+  margin-bottom: 0px;
+  max-height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.locationModel .countryList li {
+  width: 100%;
+  list-style: none;
+}
+.locationModel .countryList li button {
+  width: 100%;
+  text-transform: uppercase;
+  color: #000 !important;
+  justify-content: flex-start !important;
+  padding: 15px 20px !important;
+}
+
+.locationModel .close_ {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: rgba(0, 0, 0, 0.8) !important;
+  min-width: 30px !important;
+  height: 40px !important;
+  width: 40px !important;
+  border-radius: 50% !important;
+}
+
+.locationModel .close_ svg {
+  font-size: 25px;
 }

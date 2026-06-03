@@ -7,7 +7,7 @@ import "./App.css";
 import { createContext } from "react";
 import axios from "axios";
 
-const MyContext = createContext();
+export const MyContext = createContext();
 
 const App = () => {
   const [countryList, setCountryList] = useState([]);
@@ -20,6 +20,7 @@ const App = () => {
     try {
       const res = await axios.get(url);
       setCountryList(res.data.data);
+      console.log(res.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -32,7 +33,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <MyContext.Provider value={{ values }}>
+      <MyContext.Provider value={values}>
         <Header />
         <Routes>
           <Route path="/" exact={true} element={<Home />} />

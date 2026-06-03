@@ -32,27 +32,43 @@ const Navigation = () => {
               </li>
               <li className="list-inline-item">
                 <Link to="/fashion">
-                  <Button>FASHION</Button>
+                  <Button>MEN</Button>
                 </Link>
+                <div className="submenu">
+                  <Link to="/fashion/men/shirts">
+                    <Button>Clothing</Button>
+                  </Link>
+                  <Link to="/fashion/men/shirts">
+                    <Button>Footwear</Button>
+                  </Link>
+                  <Link to="/fashion/men/shirts">
+                    <Button>Watches</Button>
+                  </Link>
+                </div>
               </li>
               <li className="list-inline-item">
                 <Link to="/electronic">
-                  <Button>ELECTRONIC</Button>
+                  <Button>WOMEN</Button>
                 </Link>
               </li>
               <li className="list-inline-item">
                 <Link to="/bakery">
-                  <Button>BAKERY</Button>
+                  <Button>BEAUTY</Button>
                 </Link>
               </li>
               <li className="list-inline-item">
                 <Link to="/grocery">
-                  <Button>GROCERY</Button>
+                  <Button>WATCHES</Button>
                 </Link>
               </li>
               <li className="list-inline-item">
                 <Link to="/mobiles">
-                  <Button>MOBILES</Button>
+                  <Button>KIDS</Button>
+                </Link>
+              </li>
+              <li className="list-inline-item">
+                <Link to="/blog">
+                  <Button>GIFT</Button>
                 </Link>
               </li>
               <li className="list-inline-item">

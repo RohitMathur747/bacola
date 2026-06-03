@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Button from "@mui/material/Button";
 import { FaAngleDown } from "react-icons/fa6";
 import Dialog from "@mui/material/Dialog";
@@ -6,6 +6,7 @@ import { IoSearchSharp } from "react-icons/io5";
 //import { IoIosClose } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import Slide from "@mui/material/Slide";
+import { MyContext } from "../../App";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -13,13 +14,41 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const CountryDropdown = ({ countries, selectedCountry, onCountryChange }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [selected, setSelected] = useState("India");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [countryList, setCountryList] = useState([]);
+
+  const context = useContext(MyContext);
+
+  const selectCountry = (countryName) => {
+    setSelected(countryName);
+    setIsOpenModal(false);
+  };
+
+  useEffect(() => {
+    setCountryList(context.countryList || []);
+  }, [context.countryList]);
+
+  const filterList = (e) => {
+    const keyword = e.target.value.toLowerCase().trim();
+    setSearchTerm(e.target.value);
+
+    if (keyword !== "") {
+      const list = (context.countryList || []).filter((item) =>
+        item.country.toLowerCase().includes(keyword),
+      );
+      setCountryList(list);
+    } else {
+      setCountryList(context.countryList || []);
+    }
+  };
 
   return (
     <>
       <Button className="countryDrop" onClick={() => setIsOpenModal(true)}>
         <div className="info d-flex flex-column">
           <span className="label">Your Location</span>
-          <span className="name">India</span>
+          <span className="name">{selected}</span>
         </div>
         <span className="ml-auto">
           <FaAngleDown />
@@ -42,63 +71,28 @@ const CountryDropdown = ({ countries, selectedCountry, onCountryChange }) => {
             type="text"
             className="searchInput"
             placeholder="Search Your area..."
+            value={searchTerm}
+            onChange={filterList}
           />
           <button className="searchBtn">
             <IoSearchSharp />
           </button>
         </div>
 
-        <ul className="countryList">
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>India</Button>
-          </li>
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>United States</Button>
-          </li>
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>
-              United Kingdom
-            </Button>
-          </li>
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>Australia</Button>
-          </li>
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>Canada</Button>
-          </li>
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>SriLanka</Button>
-          </li>
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>Bangladesh</Button>
-          </li>
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>Pakistan</Button>
-          </li>
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>Bhutan</Button>
-          </li>
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>Nepal</Button>
-          </li>
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>Maldives</Button>
-          </li>
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>Afghanistan</Button>
-          </li>
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>Myanmar</Button>
-          </li>
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>Thailand</Button>
-          </li>
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>Vietnam</Button>
-          </li>
-          <li>
-            <Button onClick={() => setIsOpenModal(false)}>Indonesia</Button>
-          </li>
+        <ul className="countryList mt-3">
+          {countryList?.length !== 0 &&
+            countryList?.map((item) => {
+              return (
+                <li key={item.country}>
+                  <Button
+                    className={`${selected === item.country ? "active" : ""}`}
+                    onClick={() => selectCountry(item.country)}
+                  >
+                    {item.country}
+                  </Button>
+                </li>
+              );
+            })}
         </ul>
       </Dialog>
     </>

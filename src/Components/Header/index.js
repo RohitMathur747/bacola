@@ -2,14 +2,17 @@ import React from "react";
 import Logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import CountryDropdown from "../CountryDropdown/index";
-
+import { useContext } from "react";
 import { FaRegUser } from "react-icons/fa";
 import Button from "@mui/material/Button";
 import { IoBagOutline } from "react-icons/io5";
 import SearchBox from "./SearchBox/index";
 import Navigation from "./Navigation/index";
+import { MyContext } from "../../App";
 
 const Header = () => {
+  const context = useContext(MyContext);
+
   return (
     <>
       <div className="headerWrapper">
@@ -32,7 +35,7 @@ const Header = () => {
               </div>
 
               <div className="col-sm-10 d-flex align-items-center part2">
-                <CountryDropdown />
+                {context.countryList.length !== 0 && <CountryDropdown />}
 
                 {/* Search Bar starts */}
                 <SearchBox />

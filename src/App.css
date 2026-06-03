@@ -272,3 +272,29 @@ nav .navPart2 ul li a:hover {
 .locationModel .close_ svg {
   font-size: 25px;
 }
+
+.locationModel .countryList li button:hover {
+  background: #f1f1f1 !important;
+}
+.locationModal .countryList li button.active {
+  background: #ccc !important;
+}
+
+.headerWrapper {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  padding-bottom: 15px;
+}
+
+nav .navPart2 ul li {
+  position: relative;
+}
+nav .navPart2 ul li .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  padding: 10px 0px;
+  border-radius: 5px;
+  min-width: 150px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}

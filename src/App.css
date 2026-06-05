@@ -78,6 +78,7 @@ nav .navPart2 {
 
 .categories-dropdown li {
   position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .categories-dropdown .category-toggle,
@@ -87,10 +88,13 @@ nav .navPart2 {
   text-transform: uppercase;
   color: #000 !important;
   padding: 10px 15px !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 .categories-dropdown .category-toggle {
   border-radius: 0;
+  justify-content: space-between !important;
 }
 
 .categories-dropdown .category-toggle:hover {
@@ -110,13 +114,15 @@ nav .navPart2 {
   padding: 10px 0;
 }
 
-.categories-dropdown li.active .category-submenu {
+.categories-dropdown li.active .category-submenu,
+.categories-dropdown li:hover .category-submenu {
   display: block;
 }
 
-.categories-dropdown .category-submenu a {
-  display: block;
-  width: 100%;
+.categories-dropdown .category-submenu a button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .headerWrapper .top-strip {
@@ -285,23 +291,30 @@ nav .allCatTab .icon2 svg {
 
 nav .navPart2 ul {
   margin-bottom: 0px;
+  position: relative;
+  z-index: 1;
 }
 
-nav .navPart2 ul li a {
-  text-decoration: none;
-  font-weight: 600;
+nav .navPart2 ul li {
+  position: relative;
 }
 
-nav .navPart2 ul li a button {
-  font-size: 14px;
-  text-decoration: none;
-  font-weight: 600;
-  color: #000 !important;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  transition: all 0.2s ease-in-out;
+nav .navPart2 ul li .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  padding: 10px 0px;
+  border-radius: 5px;
+  min-width: 150px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  display: none;
+  z-index: 1000;
+}
+
+nav .navPart2 ul li:hover .submenu {
+  display: block;
 }
 
 .homeBannerSection img,
@@ -414,28 +427,6 @@ nav .navPart2 ul li a:hover {
   padding-bottom: 15px;
 }
 
-nav .navPart2 ul li {
-  position: relative;
-}
-nav .navPart2 ul li .submenu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #fff;
-  padding: 10px 0px;
-  border-radius: 5px;
-  min-width: 150px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-}
-/* hide submenus by default; show when parent has .open */
-nav .navPart2 ul li .submenu {
-  display: none;
-}
-
-nav .navPart2 ul li.open .submenu {
-  display: block;
-}
 nav .navPart2 ul li .submenu a {
   display: block;
   width: 100%;

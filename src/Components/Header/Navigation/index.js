@@ -4,6 +4,7 @@ import { IoIosMenu } from "react-icons/io";
 import { FaAngleDown } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
+import { FaAngleRight } from "react-icons/fa6";
 
 const Navigation = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -11,48 +12,50 @@ const Navigation = () => {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(null);
   const navRef = useRef(null);
 
-  const categories = [
-    {
-      title: "MEN",
-      items: [
-        { label: "Clothing", to: "/men/clothing" },
-        { label: "Footwear", to: "/men/footwear" },
-        { label: "Watches", to: "/men/watches" },
-      ],
-    },
-    {
-      title: "WOMEN",
-      items: [
-        { label: "Clothing", to: "/women/clothing" },
-        { label: "Footwear", to: "/women/footwear" },
-        { label: "Watches", to: "/women/watches" },
-      ],
-    },
-    {
-      title: "BEAUTY",
-      items: [
-        { label: "Makeup", to: "/beauty/makeup" },
-        { label: "Skincare", to: "/beauty/skincare" },
-        { label: "Fragrances", to: "/beauty/fragrances" },
-      ],
-    },
-    {
-      title: "WATCHES",
-      items: [
-        { label: "Men's Watches", to: "/watches/men" },
-        { label: "Women's Watches", to: "/watches/women" },
-        { label: "Smart Watches", to: "/watches/smart" },
-      ],
-    },
-    {
-      title: "KIDS",
-      items: [
-        { label: "Clothing", to: "/kids/clothing" },
-        { label: "Footwear", to: "/kids/footwear" },
-        { label: "Accessories", to: "/kids/accessories" },
-      ],
-    },
-  ];
+  const categories = allCatOpen
+    ? [
+        {
+          title: "MEN",
+          items: [
+            { label: "Clothing", to: "/men/clothing" },
+            { label: "Footwear", to: "/men/footwear" },
+            { label: "Watches", to: "/men/watches" },
+          ],
+        },
+        {
+          title: "WOMEN",
+          items: [
+            { label: "Clothing", to: "/women/clothing" },
+            { label: "Footwear", to: "/women/footwear" },
+            { label: "Watches", to: "/women/watches" },
+          ],
+        },
+        {
+          title: "BEAUTY",
+          items: [
+            { label: "Makeup", to: "/beauty/makeup" },
+            { label: "Skincare", to: "/beauty/skincare" },
+            { label: "Fragrances", to: "/beauty/fragrances" },
+          ],
+        },
+        {
+          title: "WATCHES",
+          items: [
+            { label: "Men's Watches", to: "/watches/men" },
+            { label: "Women's Watches", to: "/watches/women" },
+            { label: "Smart Watches", to: "/watches/smart" },
+          ],
+        },
+        {
+          title: "KIDS",
+          items: [
+            { label: "Clothing", to: "/kids/clothing" },
+            { label: "Footwear", to: "/kids/footwear" },
+            { label: "Accessories", to: "/kids/accessories" },
+          ],
+        },
+      ]
+    : [];
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -90,6 +93,14 @@ const Navigation = () => {
     setActiveCategoryIndex((prev) => (prev === index ? null : index));
   };
 
+  const showCategorySubmenu = (index) => {
+    setActiveCategoryIndex(index);
+  };
+
+  const hideCategorySubmenu = () => {
+    setActiveCategoryIndex(null);
+  };
+
   return (
     <nav ref={navRef}>
       <div className="container">
@@ -117,17 +128,21 @@ const Navigation = () => {
                     <li
                       key={category.title}
                       className={activeCategoryIndex === index ? "active" : ""}
+                      onMouseEnter={() => showCategorySubmenu(index)}
+                      onMouseLeave={hideCategorySubmenu}
                     >
                       <Button
                         className="category-toggle"
                         onClick={(e) => toggleCategory(index, e)}
                       >
-                        {category.title}
+                        {category.title} <FaAngleRight className="ml-auto" />
                       </Button>
                       <div className="category-submenu">
                         {category.items.map((sub) => (
                           <Link key={sub.label} to={sub.to}>
-                            <Button>{sub.label}</Button>
+                            <Button>
+                              {sub.label} <FaAngleRight className="ml-auto" />
+                            </Button>
                           </Link>
                         ))}
                       </div>
@@ -147,131 +162,115 @@ const Navigation = () => {
                   </Button>
                 </Link>
               </li>
-              <li
-                className={`list-inline-item ${openIndex === 0 ? "open" : ""}`}
-              >
-                <Button onClick={(e) => toggle(0, e)}>MEN</Button>
+              <li className="list-inline-item">
+                <Button>MEN</Button>
                 <div className="submenu">
-                  <Link to="/clothing">
+                  <Link to="/men/clothing">
                     <Button>Clothing</Button>
                   </Link>
-                  <Link to="/footwear">
+                  <Link to="/men/footwear">
                     <Button>Footwear</Button>
                   </Link>
-                  <Link to="/watches">
+                  <Link to="/men/watches">
                     <Button>Watches</Button>
                   </Link>
                 </div>
               </li>
-              <li
-                className={`list-inline-item ${openIndex === 1 ? "open" : ""}`}
-              >
-                <Button onClick={(e) => toggle(1, e)}>WOMEN</Button>
+              <li className="list-inline-item">
+                <Button>WOMEN</Button>
                 <div className="submenu">
-                  <Link to="/clothing">
+                  <Link to="/women/clothing">
                     <Button>Clothing</Button>
                   </Link>
-                  <Link to="/footwear">
+                  <Link to="/women/footwear">
                     <Button>Footwear</Button>
                   </Link>
-                  <Link to="/watches">
+                  <Link to="/women/watches">
                     <Button>Watches</Button>
                   </Link>
                 </div>
               </li>
-              <li
-                className={`list-inline-item ${openIndex === 2 ? "open" : ""}`}
-              >
-                <Button onClick={(e) => toggle(2, e)}>BEAUTY</Button>
+              <li className="list-inline-item">
+                <Button>BEAUTY</Button>
                 <div className="submenu">
-                  <Link to="/clothing">
-                    <Button>Clothing</Button>
+                  <Link to="/beauty/makeup">
+                    <Button>Makeup</Button>
                   </Link>
-                  <Link to="/footwear">
-                    <Button>Footwear</Button>
+                  <Link to="/beauty/skincare">
+                    <Button>Skincare</Button>
                   </Link>
-                  <Link to="/watches">
-                    <Button>Watches</Button>
+                  <Link to="/beauty/fragrances">
+                    <Button>Fragrances</Button>
                   </Link>
                 </div>
               </li>
-              <li
-                className={`list-inline-item ${openIndex === 3 ? "open" : ""}`}
-              >
-                <Button onClick={(e) => toggle(3, e)}>WATCHES</Button>
+              <li className="list-inline-item">
+                <Button>WATCHES</Button>
                 <div className="submenu">
-                  <Link to="/clothing">
-                    <Button>Clothing</Button>
+                  <Link to="/watches/men">
+                    <Button>Men's Watches</Button>
                   </Link>
-                  <Link to="/footwear">
-                    <Button>Footwear</Button>
+                  <Link to="/watches/women">
+                    <Button>Women's Watches</Button>
                   </Link>
-                  <Link to="/watches">
-                    <Button>Watches</Button>
+                  <Link to="/watches/smart">
+                    <Button>Smart Watches</Button>
                   </Link>
                 </div>
               </li>
-              <li
-                className={`list-inline-item ${openIndex === 4 ? "open" : ""}`}
-              >
-                <Button onClick={(e) => toggle(4, e)}>KIDS</Button>
+              <li className="list-inline-item">
+                <Button>KIDS</Button>
                 <div className="submenu">
-                  <Link to="/clothing">
+                  <Link to="/kids/clothing">
                     <Button>Clothing</Button>
                   </Link>
-                  <Link to="/footwear">
+                  <Link to="/kids/footwear">
                     <Button>Footwear</Button>
                   </Link>
-                  <Link to="/watches">
-                    <Button>Watches</Button>
+                  <Link to="/kids/accessories">
+                    <Button>Accessories</Button>
                   </Link>
                 </div>
               </li>
-              <li
-                className={`list-inline-item ${openIndex === 5 ? "open" : ""}`}
-              >
-                <Button onClick={(e) => toggle(5, e)}>GIFT</Button>
+              <li className="list-inline-item">
+                <Button>GIFT</Button>
                 <div className="submenu">
-                  <Link to="/clothing">
-                    <Button>Clothing</Button>
+                  <Link to="/gift/gift-cards">
+                    <Button>Gift Cards</Button>
                   </Link>
-                  <Link to="/footwear">
-                    <Button>Footwear</Button>
+                  <Link to="/gift/gift-sets">
+                    <Button>Gift Sets</Button>
                   </Link>
-                  <Link to="/watches">
-                    <Button>Watches</Button>
+                  <Link to="/gift/seasonal">
+                    <Button>Seasonal Gifts</Button>
                   </Link>
                 </div>
               </li>
-              <li
-                className={`list-inline-item ${openIndex === 6 ? "open" : ""}`}
-              >
-                <Button onClick={(e) => toggle(6, e)}>BLOG</Button>
+              <li className="list-inline-item">
+                <Button>BLOG</Button>
                 <div className="submenu">
-                  <Link to="/clothing">
-                    <Button>Clothing</Button>
+                  <Link to="/blog/latest">
+                    <Button>Latest Posts</Button>
                   </Link>
-                  <Link to="/footwear">
-                    <Button>Footwear</Button>
+                  <Link to="/blog/trends">
+                    <Button>Trends</Button>
                   </Link>
-                  <Link to="/watches">
-                    <Button>Watches</Button>
+                  <Link to="/blog/inspiration">
+                    <Button>Inspiration</Button>
                   </Link>
                 </div>
               </li>
-              <li
-                className={`list-inline-item ${openIndex === 7 ? "open" : ""}`}
-              >
-                <Button onClick={(e) => toggle(7, e)}>CONTACT US</Button>
+              <li className="list-inline-item">
+                <Button>CONTACT US</Button>
                 <div className="submenu">
-                  <Link to="/clothing">
-                    <Button>Clothing</Button>
+                  <Link to="/contact/customer-care">
+                    <Button>Customer Care</Button>
                   </Link>
-                  <Link to="/footwear">
-                    <Button>Footwear</Button>
+                  <Link to="/contact/stores">
+                    <Button>Store Locator</Button>
                   </Link>
-                  <Link to="/watches">
-                    <Button>Watches</Button>
+                  <Link to="/contact/support">
+                    <Button>Partner Support</Button>
                   </Link>
                 </div>
               </li>

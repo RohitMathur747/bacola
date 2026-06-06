@@ -9,6 +9,8 @@
 
 body {
   font-family: "Lato", sans-serif;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .bg-purple {
@@ -438,4 +440,82 @@ nav .navPart2 ul li .submenu a button {
   border-radius: 0px !important;
   text-transform: capitalize;
   font-weight: 500;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.homeProducts {
+  padding: 25px 0px;
+  width: 100%;
+}
+
+.homeProducts .banner {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.text-light {
+  color: #ccc !important;
+}
+
+.text-sml {
+  font-size: 14px;
+}
+
+.productRow .hd {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.viewAllBtn {
+  padding: 8px 25px !important;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 30px !important;
+  color: #2a2222 !important;
+  text-transform: capitalize;
+}
+
+.viewAllBtn svg {
+  font-size: 20px;
+}
+
+.productItem {
+  width: 100%;
+  height: auto;
+  border: 1 px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.productItem .info {
+  padding: 25px;
+}
+
+.productItem h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.productItem .info .oldPrice {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.4);
+  text-decoration: line-through;
+}
+
+.productItem .info .netPrice {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Ensure all product images use identical dimensions */
+.productImage {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  display: block;
 }

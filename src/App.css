@@ -470,6 +470,29 @@ nav .navPart2 ul li .submenu a button {
   font-weight: 600;
 }
 
+.product-display-grid .product-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/* Keep product cards full width inside the grid */
+.product-display-grid .productItem {
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .product-display-grid .product-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .product-display-grid .product-row {
+    grid-template-columns: 1fr;
+  }
+}
+
 .viewAllBtn {
   padding: 8px 25px !important;
   background: #fff;
@@ -578,6 +601,33 @@ nav .navPart2 ul li .submenu a button {
   opacity: 1;
   visibility: visible;
   right: 50px;
+}
+
+/* Add to Cart button - hidden until product hover */
+.addToCartWrap {
+  position: static;
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.18s ease,
+    visibility 0.18s ease,
+    transform 0.18s ease;
+}
+
+.addToCartBtn {
+  text-transform: none;
+  padding: 8px 12px !important;
+  width: 100%;
+  display: block;
+}
+
+.productItem:hover .addToCartWrap {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .homeCat .item {
@@ -695,6 +745,20 @@ nav .navPart2 ul li .submenu a button {
 
 .homecat-slide {
   padding-top: 20px;
+}
+
+/* lowerslider images - ensure two images sit side-by-side and are responsive */
+.lowerslider {
+  margin-top: 20px;
+}
+.lowerslider .col-sm-6 {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.lowerslider img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 @media (max-width: 992px) {

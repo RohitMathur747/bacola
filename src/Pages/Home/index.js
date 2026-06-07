@@ -4,7 +4,6 @@ import banner1 from "../../assets/images/banner1.jpg";
 import banner2 from "../../assets/images/verticalbanner2.jpg";
 import Button from "@mui/material/Button";
 import { FaArrowRight } from "react-icons/fa";
-
 import ProductItem from "../../Components/ProductItem";
 import HomeCat from "../../Components/HomeCat";
 

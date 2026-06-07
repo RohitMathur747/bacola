@@ -488,6 +488,7 @@ nav .navPart2 ul li .submenu a button {
   height: auto;
   border: 1 px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  position: relative;
 }
 
 .productItem .info {
@@ -518,4 +519,69 @@ nav .navPart2 ul li .submenu a button {
   height: 250px;
   object-fit: cover;
   display: block;
+}
+
+.productItem .badge {
+  display: inline-block;
+  position: absolute;
+  padding: 8px 15px;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+.productItem .actions {
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
+
+.productItem .actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px !important;
+  height: 40px !important;
+  width: 40px !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50% !important;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.productItem .actions button:hover {
+  background: #233a95 !important;
+}
+
+.productItem .actions button:hover svg {
+  color: #fff !important;
+}
+
+.productItem .actions button svg {
+  color: #000 !important;
+  opacity: 0.7;
+}
+
+.productItem .imgWrapper {
+  overflow: hidden;
+}
+
+.productItem .imgWrapper:hover .actions {
+  opacity: 1;
+  visibility: visible;
+  right: 50px;
+}
+
+.homeCat .item {
+  padding: 15px;
+  width: 100%;
+  height: auto;
 }

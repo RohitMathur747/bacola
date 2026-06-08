@@ -38,21 +38,23 @@ const HomeBanner = () => {
     nextArrow: <NextArrow />,
   };
   return (
-    <div className="homeBannerSection">
-      <Slider {...settings}>
-        <div className="item">
-          <img className="w-100" src={banner1} alt="Banner 1" />
-        </div>
-        <div className="item">
-          <img className="w-100" src={banner2} alt="Banner 2" />
-        </div>
-        <div className="item">
-          <img className="w-100" src={banner3} alt="Banner 3" />
-        </div>
-        <div className="item">
-          <img className="w-100" src={banner4} alt="Banner 4" />
-        </div>
-      </Slider>
+    <div className="container md-3">
+      <div className="homeBannerSection">
+        <Slider {...settings}>
+          <div className="item">
+            <img className="w-100" src={banner1} alt="Banner 1" />
+          </div>
+          <div className="item">
+            <img className="w-100" src={banner2} alt="Banner 2" />
+          </div>
+          <div className="item">
+            <img className="w-100" src={banner3} alt="Banner 3" />
+          </div>
+          <div className="item">
+            <img className="w-100" src={banner4} alt="Banner 4" />
+          </div>
+        </Slider>
+      </div>
     </div>
   );
 };

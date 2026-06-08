@@ -62,7 +62,14 @@ const ProductItem = () => {
                 alt="Product 2"
               />
               <span className="badge badge-primary">20%</span>
-              <div className="actions"></div>
+              <div className="actions">
+                <Button>
+                  <SlSizeFullscreen />
+                </Button>
+                <Button>
+                  <IoMdHeartEmpty />
+                </Button>
+              </div>
               <div className="info">
                 <h4>Clothing For Men</h4>
                 <span className="text-success mb-2">In Stock</span>
@@ -86,7 +93,14 @@ const ProductItem = () => {
                 alt="Product 3"
               />
               <span className="badge badge-primary">15%</span>
-              <div className="actions"></div>
+              <div className="actions">
+                <Button>
+                  <SlSizeFullscreen />
+                </Button>
+                <Button>
+                  <IoMdHeartEmpty />
+                </Button>
+              </div>
               <div className="info">
                 <h4>Clothing For Kids</h4>
                 <span className="text-success mb-2">In Stock</span>
@@ -115,7 +129,14 @@ const ProductItem = () => {
                 alt="Product 4"
               />
               <span className="badge badge-primary">15%</span>
-              <div className="actions"></div>
+              <div className="actions">
+                <Button>
+                  <SlSizeFullscreen />
+                </Button>
+                <Button>
+                  <IoMdHeartEmpty />
+                </Button>
+              </div>
               <div className="info">
                 <h4>Suits For Men</h4>
                 <span className="text-success mb-2">In Stock</span>
@@ -144,7 +165,14 @@ const ProductItem = () => {
                 alt="Product 5"
               />
               <span className="badge badge-primary">5%</span>
-              <div className="actions"></div>
+              <div className="actions">
+                <Button>
+                  <SlSizeFullscreen />
+                </Button>
+                <Button>
+                  <IoMdHeartEmpty />
+                </Button>
+              </div>
               <div className="info">
                 <h4>Rolex</h4>
                 <span className="text-success mt-2">In Stock</span>
@@ -173,7 +201,14 @@ const ProductItem = () => {
                 alt="Product 6"
               />
               <span className="badge badge-primary">10%</span>
-              <div className="actions"></div>
+              <div className="actions">
+                <Button>
+                  <SlSizeFullscreen />
+                </Button>
+                <Button>
+                  <IoMdHeartEmpty />
+                </Button>
+              </div>
               <div className="info">
                 <h4>Iphone 17 Pro Max</h4>
                 <span className="text-success mb-2">In Stock</span>

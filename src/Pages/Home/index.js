@@ -10,6 +10,8 @@ import HomeCat from "../../Components/HomeCat";
 import ProductDisplayNoSlider from "../../Components/ProductDisplay";
 import lowban1 from "../../assets/images/lowerbanner1.jpg";
 import lowban2 from "../../assets/images/lowerbanner2.jpg";
+import newsletter from "../../assets/images/coupon.png";
+import { CiMail } from "react-icons/ci";
 
 const Home = () => {
   return (
@@ -72,6 +74,38 @@ const Home = () => {
               <div className="col-sm-6">
                 <img src={lowban2} className="w-100" alt="lower banner 2" />
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="newsLetterSection mt-3 mb-3 d-flex align-items-center">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <p className="text-white">$20 discount for your first order</p>
+              <h4 className="text-white">Join our newSletter and get ...</h4>
+              <p className="text-light">
+                Join our email subscription now to get updates
+                <br /> on promotion and coupons.
+              </p>
+
+              <form>
+                <CiMail className="emailIcon" />
+                <input
+                  id="newsletterEmail"
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  required
+                />
+                <Button type="submit" className="subscribeBtn">
+                  Subscribe
+                </Button>
+              </form>
+            </div>
+            <div className="col-md-6">
+              <img src={newsletter} />
             </div>
           </div>
         </div>

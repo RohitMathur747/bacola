@@ -32,10 +32,23 @@ const ProductDisplayNoSlider = () => {
                 </Button>
               </div>
               <div className="info">
+                <div className="product-header-meta d-flex align-items-center gap-3">
+                  <span className="brand-name text-uppercase">BrandA</span>
+                  <div className="rating-inline d-flex align-items-center">
+                    <Rating
+                      name="size-medium"
+                      className="mt-0"
+                      defaultValue={5}
+                      readOnly
+                      size="small"
+                    />
+                    <span className="rating-value ms-1">5</span>
+                  </div>
+                  <span className="order-no">Order No: A001</span>
+                </div>
                 <h4>Clothing For Women</h4>
                 <span className="text-success">In Stock</span>
                 <br />
-                <Rating name="size-medium" className="mt-2" defaultValue={5} />
                 <div className="d-flex">
                   <span className="oldPrice mt-2">$20.00</span>
                   <span className="netPrice text-danger mt-2">
@@ -72,10 +85,23 @@ const ProductDisplayNoSlider = () => {
                 </Button>
               </div>
               <div className="info">
+                <div className="product-header-meta d-flex align-items-center gap-3">
+                  <span className="brand-name text-uppercase">BrandB</span>
+                  <div className="rating-inline d-flex align-items-center">
+                    <Rating
+                      name="size-medium-2"
+                      className="mt-0"
+                      defaultValue={4}
+                      readOnly
+                      size="small"
+                    />
+                    <span className="rating-value ms-1">4</span>
+                  </div>
+                  <span className="order-no">Order No: B002</span>
+                </div>
                 <h4>Clothing For Men</h4>
                 <span className="text-success mb-2">In Stock</span>
                 <br />
-                <Rating name="size-medium" className="mt-2" defaultValue={4} />
                 <div className="d-flex">
                   <span className="oldPrice mt-2">$20.00</span>
                   <span className="netPrice text-danger mt-2">
@@ -112,6 +138,20 @@ const ProductDisplayNoSlider = () => {
                 </Button>
               </div>
               <div className="info">
+                <div className="product-header-meta d-flex align-items-center gap-3">
+                  <span className="brand-name text-uppercase">BrandC</span>
+                  <div className="rating-inline d-flex align-items-center">
+                    <Rating
+                      name="size-medium-3"
+                      className="mt-0"
+                      defaultValue={4}
+                      readOnly
+                      size="small"
+                    />
+                    <span className="rating-value ms-1">4</span>
+                  </div>
+                  <span className="order-no">Order No: C003</span>
+                </div>
                 <h4>Clothing For Kids</h4>
                 <span className="text-success mb-2">In Stock</span>
                 <br />
@@ -157,6 +197,20 @@ const ProductDisplayNoSlider = () => {
                 </Button>
               </div>
               <div className="info">
+                <div className="product-header-meta d-flex align-items-center gap-3">
+                  <span className="brand-name text-uppercase">BrandD</span>
+                  <div className="rating-inline d-flex align-items-center">
+                    <Rating
+                      name="size-medium-4"
+                      className="mt-0"
+                      defaultValue={4}
+                      readOnly
+                      size="small"
+                    />
+                    <span className="rating-value ms-1">4</span>
+                  </div>
+                  <span className="order-no">Order No: D004</span>
+                </div>
                 <h4>Suits For Men</h4>
                 <span className="text-success mb-2">In Stock</span>
                 <br />
@@ -202,6 +256,20 @@ const ProductDisplayNoSlider = () => {
                 </Button>
               </div>
               <div className="info">
+                <div className="product-header-meta d-flex align-items-center gap-3">
+                  <span className="brand-name text-uppercase">BrandE</span>
+                  <div className="rating-inline d-flex align-items-center">
+                    <Rating
+                      name="size-medium-5"
+                      className="mt-0"
+                      defaultValue={4}
+                      readOnly
+                      size="small"
+                    />
+                    <span className="rating-value ms-1">4</span>
+                  </div>
+                  <span className="order-no">Order No: E005</span>
+                </div>
                 <h4>Rolex</h4>
                 <span className="text-success mt-2">In Stock</span>
                 <br />
@@ -247,6 +315,20 @@ const ProductDisplayNoSlider = () => {
                 </Button>
               </div>
               <div className="info">
+                <div className="product-header-meta d-flex align-items-center gap-3">
+                  <span className="brand-name text-uppercase">BrandF</span>
+                  <div className="rating-inline d-flex align-items-center">
+                    <Rating
+                      name="size-medium-6"
+                      className="mt-0"
+                      defaultValue={4}
+                      readOnly
+                      size="small"
+                    />
+                    <span className="rating-value ms-1">4</span>
+                  </div>
+                  <span className="order-no">Order No: F006</span>
+                </div>
                 <h4>Iphone 17 Pro Max</h4>
                 <span className="text-success mb-2">In Stock</span>
                 <br />

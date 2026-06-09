@@ -1065,3 +1065,345 @@ footer .top-info .col:last-child {
   background: #233a95;
   color: #fff;
 }
+
+/* Product detail modal header and layout */
+.product-detail-header h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.product-detail-content {
+  display: flex;
+  flex: 1;
+  gap: 30px;
+  padding: 24px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(100vh - 92px);
+}
+
+.product-detail-modal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* add a clear bottom border under the product detail header */
+.product-detail-header {
+  border-bottom: 1px solid #000;
+  padding-bottom: 8px;
+}
+
+/* Header meta row: brand, rating, order no */
+.product-header-meta {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.product-header-meta .brand-name {
+  font-weight: 700;
+  color: #233a95;
+  letter-spacing: 0.08em;
+}
+
+.product-header-meta .rating-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(35, 58, 149, 0.06);
+  padding: 6px 10px;
+  border-radius: 12px;
+}
+
+.product-header-meta .rating-value {
+  font-weight: 700;
+  color: #233a95;
+}
+
+.product-header-meta .order-no {
+  color: rgba(0, 0, 0, 0.55);
+  font-weight: 600;
+  background: #fff;
+  padding: 6px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.product-title {
+  font-size: 22px;
+  margin-top: 6px;
+  color: rgba(0, 0, 0, 0.92);
+}
+
+/* Detail image and thumbnail styles with hover zoom */
+.detail-image-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-main-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-main-image .detail-badges {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 20;
+}
+
+.detail-main-image .primary-badge,
+.detail-main-image .recommended-badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+}
+
+.detail-main-image .primary-badge {
+  background: #ff6b6b;
+}
+
+.detail-main-image .recommended-badge {
+  background: #233a95;
+}
+
+.detail-main-img {
+  transition: transform 0.35s ease;
+}
+
+.detail-main-image:hover .detail-main-img {
+  transform: scale(1.06);
+}
+
+.detail-thumb img {
+  transition: transform 0.25s ease;
+}
+
+.detail-thumb:hover img {
+  transform: scale(1.1);
+}
+
+.detail-thumb.active {
+  box-shadow: 0 6px 18px rgba(35, 58, 149, 0.12);
+}
+
+/* center thumbnails and style price/qty/add to cart */
+.detail-thumbs {
+  justify-content: center;
+}
+
+.price-row .oldPrice {
+  font-size: 14px;
+}
+
+.price-row .netPrice {
+  color: #d32f2f;
+}
+
+.qty-controls {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  padding: 6px;
+}
+
+.qty-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: #f3f4f7;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.qty-display {
+  min-width: 40px;
+  text-align: center;
+  font-weight: 700;
+  padding: 0 6px;
+}
+
+.add-to-cart-large {
+  background: #233a95 !important;
+  color: #fff !important;
+  text-transform: none !important;
+}
+
+.sku-review {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+/* Dialog overall sizing and centering */
+.product-detail-modal {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header styling */
+.product-detail-header {
+  padding: 20px 32px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.product-detail-header .product-title {
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.product-header-meta {
+  gap: 18px;
+}
+
+/* Left image area sizing to match screenshot */
+.detail-image-section {
+  padding: 32px;
+}
+
+.detail-main-image {
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+.detail-main-img {
+  width: auto;
+  max-width: 78%;
+  max-height: 92%;
+  object-fit: contain;
+  transform-origin: center center;
+}
+
+.detail-badges span {
+  display: inline-block;
+  padding: 6px 10px;
+  font-weight: 700;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.detail-badges .primary-badge {
+  background: #2a9df4;
+  color: #fff;
+}
+
+.detail-badges .recommended-badge {
+  background: #6c757d;
+  color: #fff;
+}
+
+.detail-thumbs {
+  margin-top: 18px;
+}
+
+.detail-thumb {
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.detail-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Right info column styling */
+.detail-info-section {
+  padding: 32px 40px;
+}
+
+.price-row .netPrice {
+  font-size: 26px;
+}
+
+.stock-status .text-success {
+  background: #e9f7ef;
+  color: #2e7d32;
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.qty-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border-radius: 30px;
+  background: #f6f7fb;
+}
+
+.qty-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.add-to-cart-large {
+  border-radius: 30px !important;
+  padding: 10px 28px !important;
+  box-shadow: 0 8px 20px rgba(35, 58, 149, 0.12);
+}
+
+.detail-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.detail-category-tags p {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 992px) {
+  .detail-main-image {
+    height: 320px;
+  }
+  .detail-info-section {
+    padding: 20px;
+  }
+  .detail-image-section {
+    padding: 20px;
+  }
+}
+
+/* On large laptop screens (1200px and up) make dialog occupy 80% width and full viewport height */
+@media (min-width: 1200px) {
+  .MuiDialog-paper,
+  .MuiDialog-root .MuiDialog-paper {
+    width: 80vw !important;
+    max-width: 80vw !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    margin: 0 auto !important;
+    border-radius: 10px !important;
+    overflow: hidden;
+  }
+
+  .product-detail-modal {
+    height: 100vh;
+  }
+}

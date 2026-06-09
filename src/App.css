@@ -14,7 +14,7 @@ body {
 }
 
 .bg-purple {
-  background-color: #233a95;
+  background-color: #9b50cb;
 }
 
 @media (min-width: 1300px) {
@@ -129,7 +129,7 @@ nav .navPart2 {
 
 .headerWrapper .top-strip {
   padding: 8px 0px;
-  background-color: #233a95;
+  background-color: #9b50cb;
 }
 
 .headerWrapper .top-strip p {
@@ -174,7 +174,7 @@ nav .navPart2 {
 .headerWrapper .header .part2 .countryDrop .name {
   font-size: 14px !important;
   text-transform: uppercase !important;
-  color: #233a95 !important;
+  color: #9b50cb !important;
   font-weight: 700 !important;
   line-height: 16px;
 }
@@ -265,7 +265,7 @@ nav .allCatTab {
   font-size: 14px;
   font-weight: 500;
   color: #fff !important;
-  background-color: #2bbef9;
+  background-color: #9b50cb;
   padding: 10px 15px !important;
   border-radius: 30px !important;
 }
@@ -581,7 +581,7 @@ nav .navPart2 ul li .submenu a button {
 }
 
 .productItem .actions button:hover {
-  background: #233a95 !important;
+  background: #9b50cb !important;
 }
 
 .productItem .actions button:hover svg {
@@ -780,7 +780,7 @@ nav .navPart2 ul li .submenu a button {
 .newsLetterSection {
   width: 100%;
   padding: 60px 0;
-  background: linear-gradient(135deg, #233a95 0%, #1f3ab4 100%);
+  background: linear-gradient(135deg, #9b50cb 0%, #9b50cb 100%);
   color: #fff;
   overflow: hidden;
 }
@@ -851,7 +851,7 @@ nav .navPart2 ul li .submenu a button {
   padding: 0.85rem 1.25rem;
   border-radius: 12px !important;
   text-transform: uppercase;
-  background: #233a95 !important;
+  background: #9b50cb !important;
   color: #fff !important;
   font-weight: 700 !important;
 }
@@ -988,7 +988,7 @@ footer .footer-col li:hover {
 }
 
 footer .footer-col li a:hover {
-  color: #233a95;
+  color: #9b50cb;
 }
 
 @media (max-width: 768px) {
@@ -1025,7 +1025,7 @@ footer .top-info .col:last-child {
 
 .copywright .owner {
   font-weight: 700;
-  color: #233a95;
+  color: #9b50cb;
   margin-left: 6px;
 }
 
@@ -1048,7 +1048,7 @@ footer .top-info .col:last-child {
   height: 44px;
   border-radius: 50%;
   background: #f4f6fb;
-  color: #233a95;
+  color: #9b50cb;
   transition:
     transform 0.18s ease,
     background 0.18s ease,
@@ -1062,7 +1062,7 @@ footer .top-info .col:last-child {
 
 .footer-social a:hover {
   transform: translateY(-6px);
-  background: #233a95;
+  background: #9b50cb;
   color: #fff;
 }
 
@@ -1103,7 +1103,7 @@ footer .top-info .col:last-child {
 
 .product-header-meta .brand-name {
   font-weight: 700;
-  color: #233a95;
+  color: #9b50cb;
   letter-spacing: 0.08em;
 }
 
@@ -1118,7 +1118,7 @@ footer .top-info .col:last-child {
 
 .product-header-meta .rating-value {
   font-weight: 700;
-  color: #233a95;
+  color: #9b50cb;
 }
 
 .product-header-meta .order-no {
@@ -1172,7 +1172,7 @@ footer .top-info .col:last-child {
 }
 
 .detail-main-image .recommended-badge {
-  background: #233a95;
+  background: #9b50cb;
 }
 
 .detail-main-img {
@@ -1233,7 +1233,7 @@ footer .top-info .col:last-child {
 }
 
 .add-to-cart-large {
-  background: #233a95 !important;
+  background: #9b50cb !important;
   color: #fff !important;
   text-transform: none !important;
 }

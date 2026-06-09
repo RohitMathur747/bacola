@@ -20,7 +20,7 @@ const products = [
     brand: "Aurora Fashion",
     title: "Clothing For Women",
     src: product1,
-    images: [product1, product2, product3, product4],
+    images: [product1, product1, product1, product1],
     badge: "28%",
     status: "In Stock",
     rating: 5,
@@ -40,7 +40,7 @@ const products = [
     brand: "Titan Style",
     title: "Clothing For Men",
     src: product2,
-    images: [product2, product1, product3, product4],
+    images: [product2, product2, product2, product2],
     badge: "20%",
     status: "In Stock",
     rating: 4,
@@ -60,7 +60,7 @@ const products = [
     brand: "Kids Trend",
     title: "Clothing For Kids",
     src: product3,
-    images: [product3, product2, product4, product5],
+    images: [product3, product3, product3, product3],
     badge: "15%",
     status: "Out of Stock",
     rating: 4,
@@ -80,7 +80,7 @@ const products = [
     brand: "Signature Suits",
     title: "Suits For Men",
     src: product4,
-    images: [product4, product1, product2, product3],
+    images: [product4, product4, product4, product4],
     badge: "15%",
     status: "In Stock",
     rating: 4,
@@ -100,7 +100,7 @@ const products = [
     brand: "Elite Watches",
     title: "Rolex",
     src: product5,
-    images: [product5, product6, product1, product2],
+    images: [product5, product5, product5, product5],
     badge: "5%",
     status: "In Stock",
     rating: 4,
@@ -119,7 +119,7 @@ const products = [
     brand: "Future Tech",
     title: "Iphone 17 Pro Max",
     src: product6,
-    images: [product6, product5, product4, product3],
+    images: [product6, product6, product6, product6],
     badge: "10%",
     status: "In Stock",
     rating: 4,
@@ -290,7 +290,7 @@ const ProductItem = () => {
                   {selectedProduct.images.slice(0, 3).map((img, index) => (
                     <div
                       key={index}
-                      className={`detail-thumb rounded-3 overflow-hidden ${index === selectedImageIndex ? "active" : ""}`}
+                      className={`detail-thumb rounded-3 mr-5 overflow-hidden ${index === selectedImageIndex ? "active" : ""}`}
                       style={{
                         width: 60,
                         height: 60,
@@ -390,10 +390,18 @@ const ProductItem = () => {
                 </div>
 
                 <div className="d-flex gap-3 mb-4">
-                  <Button variant="outlined" startIcon={<IoMdHeartEmpty />}>
+                  <Button
+                    variant="outlined"
+                    style={{ color: "#000" }}
+                    startIcon={<IoMdHeartEmpty />}
+                  >
                     Add to wishlist
                   </Button>
-                  <Button variant="outlined" startIcon={<MdCompareArrows />}>
+                  <Button
+                    variant="outlined"
+                    style={{ color: "#000" }}
+                    startIcon={<MdCompareArrows />}
+                  >
                     Compare
                   </Button>
                 </div>

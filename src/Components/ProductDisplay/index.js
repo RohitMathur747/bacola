@@ -190,9 +190,10 @@ const ProductDisplayNoSlider = () => {
                         {product.rating}
                       </span>
                     </div>
+                    {/* <br />
                     <span className="order-no">
                       Order No: {product.orderNo}
-                    </span>
+                    </span> */}
                   </div>
 
                   <h4>{product.title}</h4>
@@ -271,9 +272,9 @@ const ProductDisplayNoSlider = () => {
                     </span>
                   </div>
 
-                  <span className="order-no">
+                  {/* <span className="order-no">
                     Order No: {selectedProduct.orderNo}
-                  </span>
+                  </span> */}
                 </div>
               </div>
 

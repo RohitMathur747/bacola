@@ -1487,3 +1487,48 @@ footer .top-info .col:last-child {
   width: 80%;
   flex: 0 0 80%;
 }
+
+.showBy {
+  width: 100%;
+  height: 50px;
+  background: #f7f8fd;
+}
+
+.product_Listing_Page
+  .productListing
+  .content_right
+  .showBy
+  .btnWrapper
+  button {
+  min-width: 40px !important;
+  height: 40px !important;
+  width: 40px !important;
+  border-radius: 50% !important;
+  color: #000 !important;
+  font-size: 20px !important;
+  opacity: 0.7;
+}
+
+.showByFilter button {
+  min-width: auto !important;
+  color: #000;
+}
+
+.showByFilter button svg {
+  color: #000;
+  opacity: 0.7;
+  margin-left: 10px;
+}
+
+/* View toggle active styling */
+.product_Listing_Page .showBy .btnWrapper button.active {
+  opacity: 1 !important;
+  background: #9b50cb !important;
+  color: #fff !important;
+  box-shadow: 0 10px 20px rgba(155, 80, 203, 0.22);
+}
+
+.product_Listing_Page .showBy .btnWrapper button.active svg {
+  color: #fff !important;
+  opacity: 1;
+}

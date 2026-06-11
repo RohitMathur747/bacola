@@ -135,7 +135,7 @@ const products = [
   },
 ];
 
-const ProductDisplayNoSlider = () => {
+const ProductDisplayNoSlider = ({ viewCount = 3 }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -152,8 +152,16 @@ const ProductDisplayNoSlider = () => {
 
   return (
     <>
-      <div className="product-display-grid">
-        <div className="product-row w-100">
+      <div
+        className="product-display-grid"
+        style={{ gridTemplateColumns: `repeat(${viewCount}, minmax(0, 1fr))` }}
+      >
+        <div
+          className="product-row w-100"
+          style={{
+            gridTemplateColumns: `repeat(${viewCount}, minmax(0, 1fr))`,
+          }}
+        >
           {products.map((product) => (
             <div className="item productItem" key={product.id}>
               <div className="imgWrapper">

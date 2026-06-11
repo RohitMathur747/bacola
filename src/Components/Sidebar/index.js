@@ -3,7 +3,18 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
+import clothingCatImg from "../../assets/images/banner1.jpg";
+
 const Sidebar = () => {
+  const brandNames = [
+    "Nike",
+    "Adidas",
+    "Puma",
+    "Levi's",
+    "Van Heusen",
+    "Allen Solly",
+  ];
+
   return (
     <>
       <div className="sidebar">
@@ -24,7 +35,7 @@ const Sidebar = () => {
             </FormGroup>
           </div>
 
-          <div className="priceFilter">
+          <div className="priceFilter mt-4">
             <h6>PRICE</h6>
             <div className="priceInputs">
               <input
@@ -47,7 +58,7 @@ const Sidebar = () => {
             </button>
           </div>
 
-          <div className="stockStatusFilter">
+          <div className="stockStatusFilter mt-4">
             <h6>PRODUCT STATUS</h6>
             <div className="stockStatusOptions">
               <FormGroup>
@@ -61,6 +72,29 @@ const Sidebar = () => {
                 />
               </FormGroup>
             </div>
+          </div>
+
+          <div className="brandFilter mt-4">
+            <h6>BRANDS</h6>
+            <div className="brandOptions">
+              <FormGroup>
+                {brandNames.map((brand) => (
+                  <FormControlLabel
+                    key={brand}
+                    control={<Checkbox defaultChecked={false} />}
+                    label={brand}
+                  />
+                ))}
+              </FormGroup>
+            </div>
+          </div>
+
+          <div className="brandImage mt-4">
+            <img
+              src={clothingCatImg}
+              alt="Clothing"
+              style={{ height: 300, width: "100%", objectFit: "cover" }}
+            />
           </div>
         </div>
       </div>

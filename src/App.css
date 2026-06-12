@@ -474,6 +474,20 @@ nav .navPart2 ul li .submenu a button {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+  width: 100%;
+}
+
+/* Ensure grid columns fit perfectly in container for 1/2/3/4 view modes */
+.product-display-grid.viewCount-1,
+.product-display-grid.viewCount-2,
+.product-display-grid.viewCount-3,
+.product-display-grid.viewCount-4 {
+  width: 100%;
+}
+
+.product-display-grid .product-row .productItem {
+  width: 100%;
+  height: 100%;
 }
 
 /* Keep product cards full width inside the grid */
@@ -542,6 +556,71 @@ nav .navPart2 ul li .submenu a button {
   height: 250px;
   object-fit: cover;
   display: block;
+}
+
+/* Listing view toggles */
+.product-display-grid.viewCount-1 .productItem {
+  display: flex;
+  align-items: stretch;
+}
+
+.product-display-grid.viewCount-1 .productItem .imgWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* viewCount=1: card layout should be vertical (image on top, details below) */
+.product-display-grid.viewCount-1 .productItem {
+  flex-direction: column;
+}
+
+.product-display-grid.viewCount-1 .productItem .info {
+  width: 100%;
+  padding: 18px 22px;
+}
+
+.product-display-grid.viewCount-1 .productItem .actions {
+  right: 15px;
+}
+
+.product-display-grid.viewCount-1
+  .product-display-grid
+  .productItem
+  .imgWrapper {
+  width: 40%;
+}
+
+.product-display-grid.viewCount-1 .productItem .productImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
+.product-display-grid.viewCount-1 .productItem .info {
+  width: 60%;
+  padding: 18px 22px;
+}
+
+.product-display-grid.viewCount-1 .productItem .actions {
+  right: 15px;
+}
+
+.product-display-grid.viewCount-2 .productItem {
+  height: 100%;
+}
+
+.product-display-grid.viewCount-2 .productItem .imgWrapper {
+  width: 100%;
+}
+
+.product-display-grid.viewCount-2 .productItem .productImage {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 }
 
 .productItem .badge {

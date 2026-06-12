@@ -153,7 +153,7 @@ const ProductDisplayNoSlider = ({ viewCount = 3 }) => {
   return (
     <>
       <div
-        className="product-display-grid"
+        className={`product-display-grid viewCount-${viewCount}`}
         style={{ gridTemplateColumns: `repeat(${viewCount}, minmax(0, 1fr))` }}
       >
         <div

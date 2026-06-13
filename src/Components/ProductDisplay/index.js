@@ -1,10 +1,4 @@
-import React, { useState } from "react";
-import product1 from "../../assets/images/banner2.jpg";
-import product2 from "../../assets/images/banner3.jpg";
-import product3 from "../../assets/images/banner4.jpg";
-import product4 from "../../assets/images/banner5.jpg";
-import product5 from "../../assets/images/banner6.jpg";
-import product6 from "../../assets/images/banner7.jpg";
+import React, { useMemo, useState } from "react";
 import Rating from "@mui/material/Rating";
 import Dialog from "@mui/material/Dialog";
 import Button from "@mui/material/Button";
@@ -13,132 +7,46 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { MdCompareArrows } from "react-icons/md";
 
-const products = [
-  {
-    id: 1,
-    brand: "Aurora Fashion",
-    title: "Clothing For Women",
-    src: product1,
-    images: [product1, product1, product1, product1],
-    badge: "28%",
-    status: "In Stock",
-    rating: 5,
-    orderNo: "ORD-1001",
-    oldPrice: "$20.00",
-    netPrice: "$14.00",
-    category: "Women’s Apparel",
-    tags: ["summer", "style", "trendy"],
-    type: "Casual Wear",
-    mfgDate: "2026-03-12",
-    life: "30 days",
-    description:
-      "A stylish women’s clothing item with a comfortable fit and modern design.",
-  },
-  {
-    id: 2,
-    brand: "Titan Style",
-    title: "Clothing For Men",
-    src: product2,
-    images: [product2, product2, product2, product2],
-    badge: "20%",
-    status: "In Stock",
-    rating: 4,
-    orderNo: "ORD-1002",
-    oldPrice: "$20.00",
-    netPrice: "$14.00",
-    category: "Men’s Apparel",
-    tags: ["formal", "classic", "new"],
-    type: "Formal Wear",
-    mfgDate: "2026-02-01",
-    life: "30 days",
-    description:
-      "A premium men’s outfit designed for everyday comfort and sharp style.",
-  },
-  {
-    id: 3,
-    brand: "Kids Trend",
-    title: "Clothing For Kids",
-    src: product3,
-    images: [product3, product3, product3, product3],
-    badge: "15%",
-    status: "Out of Stock",
-    rating: 4,
-    orderNo: "ORD-1003",
-    oldPrice: "$20.00",
-    netPrice: "$14.00",
-    category: "Kids Apparel",
-    tags: ["cute", "play", "comfortable"],
-    type: "Everyday Wear",
-    mfgDate: "2026-01-20",
-    life: "30 days",
-    description:
-      "A cute and durable kids’ clothing pick that is soft and easy to wear.",
-  },
-  {
-    id: 4,
-    brand: "Signature Suits",
-    title: "Suits For Men",
-    src: product4,
-    images: [product4, product4, product4, product4],
-    badge: "15%",
-    status: "In Stock",
-    rating: 4,
-    orderNo: "ORD-1004",
-    oldPrice: "$250.00",
-    netPrice: "$194.00",
-    category: "Men’s Formal",
-    tags: ["business", "elite", "premium"],
-    type: "Formal Suit",
-    mfgDate: "2026-01-05",
-    life: "30 days",
-    description:
-      "A sophisticated men’s suit for formal occasions with a sharp finish.",
-  },
-  {
-    id: 5,
-    brand: "Elite Watches",
-    title: "Rolex",
-    src: product5,
-    images: [product5, product5, product5, product5],
-    badge: "5%",
-    status: "In Stock",
-    rating: 4,
-    orderNo: "ORD-1005",
-    oldPrice: "$95,000.00",
-    netPrice: "$90,000.00",
-    category: "Luxury Accessories",
-    tags: ["premium", "luxury", "watch"],
-    type: "Luxury Watch",
-    mfgDate: "2025-12-11",
-    life: "30 days",
-    description: "A luxury timepiece with exceptional craftsmanship and style.",
-  },
-  {
-    id: 6,
-    brand: "Future Tech",
-    title: "Iphone 17 Pro Max",
-    src: product6,
-    images: [product6, product6, product6, product6],
-    badge: "10%",
-    status: "In Stock",
-    rating: 4,
-    orderNo: "ORD-1006",
-    oldPrice: "$1,420.00",
-    netPrice: "$1,200.00",
-    category: "Electronics",
-    tags: ["smartphone", "premium", "latest"],
-    type: "Mobile Phone",
-    mfgDate: "2026-04-01",
-    life: "30 days",
-    description:
-      "The latest premium smartphone with advanced features and sleek design.",
-  },
-];
+import product1 from "../../assets/images/banner2.jpg";
+import product2 from "../../assets/images/banner3.jpg";
+import product3 from "../../assets/images/banner4.jpg";
+import product4 from "../../assets/images/banner5.jpg";
+import product5 from "../../assets/images/banner6.jpg";
+import product6 from "../../assets/images/banner7.jpg";
 
-const ProductDisplayNoSlider = ({ viewCount = 3 }) => {
+import Pagination from "../ProductPagination";
+import Products from "../Products";
+
+{
+  /* All Products  */
+}
+<Products />;
+{
+  /* All Products  */
+}
+
+const ProductDisplayNoSlider = ({
+  viewCount = 3,
+  page = 1,
+  itemsPerPage = 6,
+  onPageChange,
+}) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(Products.length / Math.max(1, itemsPerPage)),
+  );
+
+  const currentPage = Math.min(Math.max(1, page), totalPages);
+
+  const currentProducts = useMemo(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    return Products.slice(start, end);
+  }, [currentPage, itemsPerPage]);
 
   const handleOpen = (product) => {
     setSelectedProduct(product);
@@ -162,7 +70,7 @@ const ProductDisplayNoSlider = ({ viewCount = 3 }) => {
             gridTemplateColumns: `repeat(${viewCount}, minmax(0, 1fr))`,
           }}
         >
-          {products.map((product) => (
+          {currentProducts.map((product) => (
             <div className="item productItem" key={product.id}>
               <div className="imgWrapper">
                 <img
@@ -198,10 +106,6 @@ const ProductDisplayNoSlider = ({ viewCount = 3 }) => {
                         {product.rating}
                       </span>
                     </div>
-                    {/* <br />
-                    <span className="order-no">
-                      Order No: {product.orderNo}
-                    </span> */}
                   </div>
 
                   <h4>{product.title}</h4>
@@ -236,6 +140,13 @@ const ProductDisplayNoSlider = ({ viewCount = 3 }) => {
               </div>
             </div>
           ))}
+        </div>
+        <div className="mt-3">
+          <Pagination
+            page={currentPage}
+            totalPages={totalPages}
+            onPageChange={(p) => onPageChange?.(p)}
+          />
         </div>
       </div>
 
@@ -279,10 +190,6 @@ const ProductDisplayNoSlider = ({ viewCount = 3 }) => {
                       {selectedProduct.rating}
                     </span>
                   </div>
-
-                  {/* <span className="order-no">
-                    Order No: {selectedProduct.orderNo}
-                  </span> */}
                 </div>
               </div>
 
@@ -451,15 +358,15 @@ const ProductDisplayNoSlider = ({ viewCount = 3 }) => {
 
                 <div className="detail-specs mb-4">
                   <div className="spec-row d-flex align-items-center gap-2 mb-2">
-                    <div className="spec-icon bg-success rounded-circle"></div>
+                    <div className="spec-icon bg-success rounded-circle" />
                     <span>Type: {selectedProduct.type}</span>
                   </div>
                   <div className="spec-row d-flex align-items-center gap-2 mb-2">
-                    <div className="spec-icon bg-success rounded-circle"></div>
+                    <div className="spec-icon bg-success rounded-circle" />
                     <span>Mfg Date: {selectedProduct.mfgDate}</span>
                   </div>
                   <div className="spec-row d-flex align-items-center gap-2">
-                    <div className="spec-icon bg-success rounded-circle"></div>
+                    <div className="spec-icon bg-success rounded-circle" />
                     <span>Life of product: {selectedProduct.life}</span>
                   </div>
                 </div>

@@ -27,6 +27,23 @@ const Listing = () => {
   // 1/2/3/4 products per row
   const [viewCount, setViewCount] = React.useState(3);
 
+  // Pagination
+  const [page, setPage] = React.useState(1);
+
+  const itemsPerPageByViewCount = {
+    1: 2,
+    2: 4,
+    3: 6,
+    4: 8,
+  };
+
+  const itemsPerPage = itemsPerPageByViewCount[viewCount] || 6;
+
+  const handleChangeViewCount = (next) => {
+    setViewCount(next);
+    setPage(1);
+  };
+
   return (
     <>
       <section className="product_Listing_Page">
@@ -40,25 +57,25 @@ const Listing = () => {
                 <div className="d-flex btnWrapper align-items-center">
                   <Button
                     className={viewCount === 1 ? "active" : ""}
-                    onClick={() => setViewCount(1)}
+                    onClick={() => handleChangeViewCount(1)}
                   >
                     <IoIosMenu />
                   </Button>
                   <Button
                     className={viewCount === 2 ? "active" : ""}
-                    onClick={() => setViewCount(2)}
+                    onClick={() => handleChangeViewCount(2)}
                   >
                     <TbLayoutGridFilled />
                   </Button>
                   <Button
                     className={viewCount === 3 ? "active" : ""}
-                    onClick={() => setViewCount(3)}
+                    onClick={() => handleChangeViewCount(3)}
                   >
                     <CgMenuGridO />
                   </Button>
                   <Button
                     className={viewCount === 4 ? "active" : ""}
-                    onClick={() => setViewCount(4)}
+                    onClick={() => handleChangeViewCount(4)}
                   >
                     <TfiLayoutGrid4Alt />
                   </Button>
@@ -94,7 +111,12 @@ const Listing = () => {
               </div>
 
               <div className="productListing">
-                <ProductDisplay viewCount={viewCount} />
+                <ProductDisplay
+                  viewCount={viewCount}
+                  page={page}
+                  itemsPerPage={itemsPerPage}
+                  onPageChange={setPage}
+                />
               </div>
             </div>
           </div>

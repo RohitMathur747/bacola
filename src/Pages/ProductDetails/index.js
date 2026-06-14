@@ -17,6 +17,7 @@ import { FaCircleDollarToSlot } from "react-icons/fa6";
 import { TbTruckDelivery } from "react-icons/tb";
 import { GiHoneyJar } from "react-icons/gi";
 import Quantity from "../../Components/Quantity";
+import ProductDisplay from "../../Components/ProductDisplay";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -619,6 +620,18 @@ const ProductDetails = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="Related Products">
+          <div className="d-flex align-items-center mt-5">
+            <div className="info w-75">
+              <h3 className="mb-0 hd">Related Products</h3>
+              <p className="text-light text-sml mb-0">
+                New Products are within the Stocks.
+              </p>
+            </div>
+          </div>
+          <ProductDisplay />
         </div>
       </div>
     </section>

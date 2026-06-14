@@ -8,6 +8,7 @@ import { createContext } from "react";
 import axios from "axios";
 import Footer from "./Components/Footer";
 import Listing from "./Pages/Listing";
+import ProductDetails from "./Pages/ProductDetails";
 
 export const MyContext = createContext();
 
@@ -40,6 +41,11 @@ const App = () => {
         <Routes>
           <Route path="/" exact={true} element={<Home />} />
           <Route path="/cat/:id" exact={true} element={<Listing />} />
+          <Route
+            path="/product/:id"
+            exact={true}
+            element={<ProductDetails />}
+          />
         </Routes>
         <Footer />
       </MyContext.Provider>

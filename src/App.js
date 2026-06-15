@@ -9,6 +9,9 @@ import axios from "axios";
 import Footer from "./Components/Footer";
 import Listing from "./Pages/Listing";
 import ProductDetails from "./Pages/ProductDetails";
+import { CartProvider } from "./context/CartContext";
+import Cart from "./Pages/Cart/Cart";
+import Checkout from "./Pages/Checkout/Checkout";
 
 export const MyContext = createContext();
 
@@ -37,17 +40,21 @@ const App = () => {
   return (
     <BrowserRouter>
       <MyContext.Provider value={values}>
-        <Header />
-        <Routes>
-          <Route path="/" exact={true} element={<Home />} />
-          <Route path="/cat/:id" exact={true} element={<Listing />} />
-          <Route
-            path="/product/:id"
-            exact={true}
-            element={<ProductDetails />}
-          />
-        </Routes>
-        <Footer />
+        <CartProvider>
+          <Header />
+          <Routes>
+            <Route path="/" exact={true} element={<Home />} />
+            <Route path="/cat/:id" exact={true} element={<Listing />} />
+            <Route
+              path="/product/:id"
+              exact={true}
+              element={<ProductDetails />}
+            />
+            <Route path="/cart" exact={true} element={<Cart />} />
+            <Route path="/checkout" exact={true} element={<Checkout />} />
+          </Routes>
+          <Footer />
+        </CartProvider>
       </MyContext.Provider>
     </BrowserRouter>
   );

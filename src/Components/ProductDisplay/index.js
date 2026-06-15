@@ -7,23 +7,9 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { MdCompareArrows } from "react-icons/md";
 
-import product1 from "../../assets/images/banner2.jpg";
-import product2 from "../../assets/images/banner3.jpg";
-import product3 from "../../assets/images/banner4.jpg";
-import product4 from "../../assets/images/banner5.jpg";
-import product5 from "../../assets/images/banner6.jpg";
-import product6 from "../../assets/images/banner7.jpg";
-
 import Pagination from "../ProductPagination";
 import Products from "../Products";
-
-{
-  /* All Products  */
-}
-<Products />;
-{
-  /* All Products  */
-}
+import useCart from "../../hooks/useCart";
 
 const ProductDisplayNoSlider = ({
   viewCount = 3,
@@ -31,6 +17,8 @@ const ProductDisplayNoSlider = ({
   itemsPerPage = 6,
   onPageChange,
 }) => {
+  const { addToCart } = useCart();
+
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -118,7 +106,6 @@ const ProductDisplayNoSlider = ({
                   >
                     {product.status}
                   </span>
-                  <br />
 
                   <div className="d-flex">
                     <span className="oldPrice mt-2">{product.oldPrice}</span>
@@ -133,6 +120,7 @@ const ProductDisplayNoSlider = ({
                     className="addToCartBtn"
                     variant="contained"
                     color="primary"
+                    onClick={() => addToCart(product, 1)}
                   >
                     Add to Cart
                   </Button>
@@ -141,6 +129,7 @@ const ProductDisplayNoSlider = ({
             </div>
           ))}
         </div>
+
         <div className="mt-3">
           <Pagination
             page={currentPage}
@@ -220,7 +209,7 @@ const ProductDisplayNoSlider = ({
 
                   <img
                     src={
-                      selectedProduct.images[selectedImageIndex] ||
+                      selectedProduct.images?.[selectedImageIndex] ||
                       selectedProduct.src
                     }
                     alt={selectedProduct.title}
@@ -234,35 +223,37 @@ const ProductDisplayNoSlider = ({
                 </div>
 
                 <div className="detail-thumbs d-flex gap-2 mt-3">
-                  {selectedProduct.images.slice(0, 3).map((img, index) => (
-                    <div
-                      key={index}
-                      className={`detail-thumb rounded-3 mr-5 overflow-hidden ${
-                        index === selectedImageIndex ? "active" : ""
-                      }`}
-                      style={{
-                        width: 60,
-                        height: 60,
-                        cursor: "pointer",
-                        background: "#fff",
-                        border:
-                          index === selectedImageIndex
-                            ? "2px solid #233a95"
-                            : "1px solid rgba(0,0,0,0.06)",
-                      }}
-                      onClick={() => setSelectedImageIndex(index)}
-                    >
-                      <img
-                        src={img}
-                        alt={`${selectedProduct.title} view ${index + 1}`}
+                  {(selectedProduct.images || [])
+                    .slice(0, 3)
+                    .map((img, index) => (
+                      <div
+                        key={index}
+                        className={`detail-thumb rounded-3 mr-5 overflow-hidden ${
+                          index === selectedImageIndex ? "active" : ""
+                        }`}
                         style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
+                          width: 60,
+                          height: 60,
+                          cursor: "pointer",
+                          background: "#fff",
+                          border:
+                            index === selectedImageIndex
+                              ? "2px solid #233a95"
+                              : "1px solid rgba(0,0,0,0.06)",
                         }}
-                      />
-                    </div>
-                  ))}
+                        onClick={() => setSelectedImageIndex(index)}
+                      >
+                        <img
+                          src={img}
+                          alt={`${selectedProduct.title} view ${index + 1}`}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                          }}
+                        />
+                      </div>
+                    ))}
                 </div>
               </div>
 
@@ -273,21 +264,21 @@ const ProductDisplayNoSlider = ({
                 <div className="price-row d-flex align-items-start justify-content-between flex-wrap gap-3 mb-3">
                   <div>
                     <div
-                      className="oldPrice"
                       style={{
                         textDecoration: "line-through",
                         color: "rgba(0,0,0,0.45)",
                       }}
+                      className="oldPrice"
                     >
                       {selectedProduct.oldPrice}
                     </div>
                     <div
-                      className="netPrice"
                       style={{
                         fontSize: 22,
                         fontWeight: 800,
                         color: "#d32f2f",
                       }}
+                      className="netPrice"
                     >
                       {selectedProduct.netPrice}
                     </div>
@@ -334,6 +325,7 @@ const ProductDisplayNoSlider = ({
                     variant="contained"
                     color="primary"
                     sx={{ borderRadius: "40px", padding: "10px 30px" }}
+                    onClick={() => addToCart(selectedProduct, quantity)}
                   >
                     Add to cart
                   </Button>
@@ -381,7 +373,8 @@ const ProductDisplayNoSlider = ({
                     <strong>Category:</strong> {selectedProduct.category}
                   </p>
                   <p className="mb-0">
-                    <strong>Tags:</strong> {selectedProduct.tags.join(", ")}
+                    <strong>Tags:</strong>{" "}
+                    {(selectedProduct.tags || []).join(", ")}
                   </p>
                 </div>
               </div>

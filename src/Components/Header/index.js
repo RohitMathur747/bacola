@@ -1,17 +1,25 @@
 import React from "react";
 import Logo from "../../assets/images/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CountryDropdown from "../CountryDropdown/index";
-import { useContext } from "react";
+import { useContext, useMemo, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import Button from "@mui/material/Button";
-import { IoBagOutline } from "react-icons/io5";
 import SearchBox from "./SearchBox/index";
 import Navigation from "./Navigation/index";
 import { MyContext } from "../../App";
+import useCart from "../../hooks/useCart";
+import CartIcon from "./CartIcon";
+import CartDropdown from "./CartDropdown";
 
 const Header = () => {
   const context = useContext(MyContext);
+  const navigate = useNavigate();
+  const { cartItems, cartCount, totals, removeAll } = useCart();
+
+  const [open, setOpen] = useState(false);
+
+  const dropdownItems = useMemo(() => cartItems || [], [cartItems]);
 
   return (
     <>
@@ -45,16 +53,23 @@ const Header = () => {
                   <Button className="circle mr-3">
                     <FaRegUser />
                   </Button>
-                  <div className="ml-auto cartTab d-flex align-items-center">
-                    <span className="price">$3.29</span>
-                    <div className="position-relative ml-2">
-                      <Button className="circle">
-                        <IoBagOutline />
-                      </Button>
-                      <span className="count d-flex align-items-center justify-center">
-                        1
-                      </span>
-                    </div>
+
+                  <div className="ml-auto cartTab d-flex align-items-center position-relative">
+                    <CartIcon
+                      count={cartCount}
+                      onClick={() => setOpen((v) => !v)}
+                    />
+
+                    <CartDropdown
+                      open={open}
+                      onClose={() => setOpen(false)}
+                      items={dropdownItems}
+                      subtotal={totals.subtotal}
+                      onRemoveAll={() => {
+                        removeAll();
+                        setOpen(false);
+                      }}
+                    />
                   </div>
                 </div>
               </div>

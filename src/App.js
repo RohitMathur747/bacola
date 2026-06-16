@@ -12,6 +12,7 @@ import ProductDetails from "./Pages/ProductDetails";
 import { CartProvider } from "./context/CartContext";
 import Cart from "./Pages/Cart/Cart";
 import Checkout from "./Pages/Checkout/Checkout";
+import AuthRoutes from "./routes/AuthRoutes";
 
 export const MyContext = createContext();
 
@@ -52,6 +53,7 @@ const App = () => {
             />
             <Route path="/cart" exact={true} element={<Cart />} />
             <Route path="/checkout" exact={true} element={<Checkout />} />
+            <Route path="/*" element={<AuthRoutes />} />
           </Routes>
           <Footer />
         </CartProvider>

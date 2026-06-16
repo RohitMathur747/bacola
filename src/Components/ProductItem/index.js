@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
+import { useNavigate } from "react-router-dom";
+import useCart from "../../hooks/useCart";
 import product1 from "../../assets/images/banner2.jpg";
 import product2 from "../../assets/images/banner3.jpg";
 import product3 from "../../assets/images/banner4.jpg";
@@ -13,7 +15,6 @@ import { SlSizeFullscreen } from "react-icons/sl";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { MdCompareArrows } from "react-icons/md";
-import Quantity from "../Quantity";
 
 const products = [
   {
@@ -138,6 +139,9 @@ const products = [
 ];
 
 const ProductItem = () => {
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
+
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -363,7 +367,39 @@ const ProductItem = () => {
 
                 <p className="text-muted mb-3">{selectedProduct.description}</p>
 
-                <Quantity />
+                <div className="d-flex align-items-center gap-3 mb-4">
+                  <div className="qty-controls d-flex align-items-center">
+                    <button
+                      className="qty-btn"
+                      type="button"
+                      onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                    >
+                      -
+                    </button>
+                    <div className="qty-display">{quantity}</div>
+                    <button
+                      className="qty-btn"
+                      type="button"
+                      onClick={() => setQuantity((q) => q + 1)}
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  <Button
+                    className="add-to-cart-large"
+                    variant="contained"
+                    color="primary"
+                    sx={{ borderRadius: "40px", padding: "10px 30px" }}
+                    type="button"
+                    onClick={() => {
+                      addToCart(selectedProduct, quantity);
+                      navigate("/cart");
+                    }}
+                  >
+                    Add to cart
+                  </Button>
+                </div>
 
                 <div className="d-flex gap-3 mb-4">
                   <Button

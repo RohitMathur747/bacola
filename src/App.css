@@ -240,6 +240,7 @@ nav .navPart2 {
 }
 
 .cartTab button {
+  width: 100%;
   background-color: #fff !important;
   color: #ea2b0f !important;
 }

@@ -15,19 +15,16 @@ import {
 } from "react-icons/md";
 import {
   FiGlobe,
-  FiMessageCircle,
   FiBell,
   FiShoppingCart,
   FiSearch,
   FiUser,
   FiLogOut,
+  FiMessageSquare,
 } from "react-icons/fi";
 import profileImg from "../../assests/user.jpg";
-import {
-  adminNotificationMessages,
-  dummyNotifications,
-  dummyMessages,
-} from "./DummyData";
+import { adminNotificationMessages, dummyNotifications } from "./DummyData";
+import MessageDropdown from "./MessageDropdown";
 
 const Header = () => {
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
@@ -56,8 +53,8 @@ const Header = () => {
   const badges = useMemo(
     () => ({
       cart: 2,
-      message: 5,
       notification: 12,
+      messages: adminNotificationMessages?.unreadCount ?? 0,
     }),
     [],
   );
@@ -170,48 +167,16 @@ const Header = () => {
                   setOpenDropdown((v) => (v === "messages" ? null : "messages"))
                 }
               >
-                <FiMessageCircle size={20} />
-                <span className="header-badge">{badges.message}</span>
+                <FiMessageSquare size={20} />
+                <span className="header-badge">{badges.messages}</span>
               </button>
               {openDropdown === "messages" && (
-                <div className="header-dropdown" role="menu">
-                  <div className="header-dropdown-head">
-                    <FiMessageCircle size={16} />
-                    <span>Messages</span>
-                  </div>
-                  {/** Random messages to Admin */}
-                  <div className="header-messages-list" role="list">
-                    {Array.isArray(dummyMessages?.items) &&
-                      dummyMessages.items.map((m) => (
-                        <div
-                          key={m.id}
-                          className="header-message-row"
-                          role="listitem"
-                        >
-                          <img
-                            className="header-message-avatar"
-                            src={profileImg}
-                            alt={m.from}
-                          />
-                          <div className="header-message-content">
-                            <div className="header-message-top">
-                              <div className="header-message-from">
-                                {m.from}
-                              </div>
-                              <div className="header-message-email">
-                                {m.fromEmail}
-                              </div>
-                            </div>
-                            <div className="header-message-text">{m.text}</div>
-                          </div>
-                        </div>
-                      ))}
-                  </div>
-
-                  <button className="btn btn-primary mt-4 btn-all">
-                    View All Messages
-                  </button>
-                </div>
+                <MessageDropdown
+                  open={true}
+                  anchorEl={null}
+                  onClose={() => setOpenDropdown(null)}
+                  isDark={isDark}
+                />
               )}
             </div>
 

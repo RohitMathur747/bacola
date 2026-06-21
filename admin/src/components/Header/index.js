@@ -1,33 +1,31 @@
 import React, { useMemo, useState, useEffect, useRef } from "react";
 
 import logo from "../../assests/logo.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   MdOutlineMenu,
   MdOutlineMenuOpen,
   MdOutlineDarkMode,
   MdOutlineLightMode,
-  MdOutlineLogout,
   MdOutlineAccountCircle,
   MdOutlineSettings,
-  MdOutlineKey,
   MdOutlinePersonAddAlt1,
 } from "react-icons/md";
 import {
   FiGlobe,
-  FiBell,
   FiShoppingCart,
-  FiSearch,
+  FiBell,
+  FiMessageSquare,
   FiUser,
   FiLogOut,
-  FiMessageSquare,
 } from "react-icons/fi";
-import profileImg from "../../assests/user.jpg";
-import { adminNotificationMessages, dummyNotifications } from "./DummyData";
-import MessageDropdown from "./MessageDropdown";
 
-const Header = () => {
-  const [sidebarExpanded, setSidebarExpanded] = useState(false);
+import profileImg from "../../assests/user.jpg";
+import { adminNotificationMessages } from "./DummyData";
+import MessageDropdown from "./MessageDropdown";
+import SearchBox from "../SearchBox";
+
+const Header = ({ sidebarExpanded, toggleSidebar }) => {
   const [isDark, setIsDark] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const navigate = useNavigate();
@@ -39,11 +37,14 @@ const Header = () => {
       if (!dropdownRef.current) return;
       if (!dropdownRef.current.contains(e.target)) setOpenDropdown(null);
     };
+
     const onKey = (e) => {
       if (e.key === "Escape") setOpenDropdown(null);
     };
+
     document.addEventListener("mousedown", onDown);
     document.addEventListener("keydown", onKey);
+
     return () => {
       document.removeEventListener("mousedown", onDown);
       document.removeEventListener("keydown", onKey);
@@ -59,7 +60,6 @@ const Header = () => {
     [],
   );
 
-  const toggleSidebar = () => setSidebarExpanded((v) => !v);
   const toggleTheme = () => setIsDark((v) => !v);
 
   return (
@@ -67,8 +67,15 @@ const Header = () => {
       <div className="header-shell">
         {/* Part 1: Sidebar Toggle */}
         <div className="header-left">
-          <img src={logo} width="120px" height="80px" className="logo" />
+          <img
+            src={logo}
+            width="120px"
+            height="80px"
+            className="logo"
+            alt="logo"
+          />
           <span className="logo-text">HOTASH</span>
+
           <button
             type="button"
             className="header-icon-btn"
@@ -83,16 +90,7 @@ const Header = () => {
           </button>
 
           {/* Part 2: Search */}
-          <div className="header-search" role="search">
-            <span className="header-search-icon" aria-hidden="true">
-              <FiSearch size={18} />
-            </span>
-            <input
-              className="header-search-input"
-              placeholder="Quick finding..."
-              aria-label="Quick finding"
-            />
-          </div>
+          <SearchBox />
         </div>
 
         {/* Part 3: Action Icons */}
@@ -135,6 +133,7 @@ const Header = () => {
                 <FiShoppingCart size={20} />
                 <span className="header-badge">{badges.cart}</span>
               </button>
+
               {openDropdown === "cart" && (
                 <div className="header-dropdown" role="menu">
                   <div className="header-dropdown-head">
@@ -149,7 +148,10 @@ const Header = () => {
                     <span className="header-dropdown-item-ic">⚡</span>
                     <span>Quick checkout</span>
                   </button>
-                  <button className="btn btn-primary mt-4 btn-all">
+                  <button
+                    className="btn btn-primary mt-4 btn-all"
+                    type="button"
+                  >
                     View All Orders
                   </button>
                 </div>
@@ -170,6 +172,7 @@ const Header = () => {
                 <FiMessageSquare size={20} />
                 <span className="header-badge">{badges.messages}</span>
               </button>
+
               {openDropdown === "messages" && (
                 <MessageDropdown
                   open={true}
@@ -196,6 +199,7 @@ const Header = () => {
                 <FiBell size={20} />
                 <span className="header-badge">{badges.notification}</span>
               </button>
+
               {openDropdown === "notifications" && (
                 <div className="header-dropdown" role="menu">
                   <div className="header-dropdown-head">
@@ -232,13 +236,11 @@ const Header = () => {
                         src={profileImg}
                         alt={user.name}
                       />
-
                       <div className="header-notif-content">
                         <div className="header-notif-top">
                           <div className="header-notif-name">{user.name}</div>
                           <div className="header-notif-email">{user.email}</div>
                         </div>
-
                         <div className="header-notif-message">
                           {user.message}
                         </div>
@@ -246,7 +248,10 @@ const Header = () => {
                     </div>
                   ))}
 
-                  <button className="btn btn-primary mt-4 btn-all">
+                  <button
+                    className="btn btn-primary mt-4 btn-all"
+                    type="button"
+                  >
                     View All Notification
                   </button>
                 </div>
@@ -301,13 +306,7 @@ const Header = () => {
                   <span>My account</span>
                 </button>
 
-                {/* <button className="header-dropdown-item" type="button">
-                  <span className="header-dropdown-item-ic">
-                    <MdOutlinePersonAddAlt1 size={16} />
-                  </span>
-                  <span>Add another account</span>
-                </button> */}
-
+                {/* Placeholder - kept to match original project */}
                 <button className="header-dropdown-item" type="button">
                   <span className="header-dropdown-item-ic">
                     <MdOutlineSettings size={16} />
@@ -315,18 +314,10 @@ const Header = () => {
                   <span>Settings</span>
                 </button>
 
-                {/* <button className="header-dropdown-item" type="button">
-                  <span className="header-dropdown-item-ic">
-                    <MdOutlineKey size={16} />
-                  </span>
-                  <span>Reset Password</span>
-                </button> */}
-
                 <button
                   className="header-dropdown-item header-dropdown-item--danger"
                   type="button"
                   onClick={() => {
-                    // Placeholder logout
                     setOpenDropdown(null);
                     navigate("/");
                   }}

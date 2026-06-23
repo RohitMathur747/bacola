@@ -100,6 +100,7 @@ const KpiCard = ({ variant, title, icon, value, badgeText, footerText }) => {
     products: "ecom-card--blue",
     orders: "ecom-card--pink",
     reviews: "ecom-card--orange",
+    sales: "ecom-card--darkblue",
   }[variant];
 
   return (

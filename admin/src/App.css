@@ -521,10 +521,30 @@ body {
 
 .ecom-card__pattern {
   position: absolute;
-  opacity: 0.1;
+  inset: 0;
   color: #e9ecef;
-  background-color: #16a34a;
   pointer-events: none;
+}
+
+/* Variant-aware pattern tint */
+.ecom-card--green .ecom-card__pattern {
+  background-color: rgb(104, 231, 151);
+}
+
+.ecom-card--blue .ecom-card__pattern {
+  background-color: rgb(59, 121, 220);
+}
+
+.ecom-card--pink .ecom-card__pattern {
+  background-color: rgb(228, 93, 176);
+}
+
+.ecom-card--orange .ecom-card__pattern {
+  background-color: rgb(223, 220, 61);
+}
+
+.ecom-salesCard {
+  background-color: rgb(26, 7, 175);
 }
 
 .ecom-card__topRow {
@@ -628,14 +648,7 @@ body {
 .ecom-salesCard__pattern {
   position: absolute;
   inset: 0;
-  opacity: 0.1;
-  background-image: repeating-linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.28) 0,
-    rgba(255, 255, 255, 0.28) 3px,
-    transparent 3px,
-    transparent 16px
-  );
+  background-color: #1d4ed8;
   pointer-events: none;
 }
 

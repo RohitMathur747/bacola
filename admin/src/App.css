@@ -440,3 +440,10 @@ body {
 .btn-all {
   width: 100% !important;
 }
+
+.admin-sidebar-badge {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(39, 32, 245);
+  color: #fff;
+}

@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { Drawer, Badge } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 import {
   Dashboard as DashboardIcon,
@@ -15,7 +16,9 @@ import {
   Description as BlankIcon,
 } from "@mui/icons-material";
 
-const drawerWidthDesktop = "30vw";
+import { FiLogOut } from "react-icons/fi";
+
+const drawerWidthDesktop = "20vw";
 const drawerWidthTablet = 280;
 
 const SidebarRoot = styled("div")(({ theme }) => ({
@@ -60,12 +63,6 @@ const IconWrap = styled("div")(({ theme }) => ({
   color: theme.palette.text.primary,
 }));
 
-const RightArrow = ({ color }) => (
-  <span style={{ display: "flex", alignItems: "center", color }} aria-hidden>
-    ›
-  </span>
-);
-
 const badgeSx = {
   "& .MuiBadge-badge": {
     height: 20,
@@ -79,6 +76,7 @@ const badgeSx = {
 
 export default function SideBar({ sidebarExpanded, toggleSidebar }) {
   const muiTheme = useTheme();
+  const navigate = useNavigate();
   const [activeKey, setActiveKey] = useState("dashboard");
 
   const menuItems = useMemo(
@@ -203,82 +201,116 @@ export default function SideBar({ sidebarExpanded, toggleSidebar }) {
         backdropFilter: "blur(14px)",
       }}
     >
-      <div className="admin-sidebar-inner">
-        <div className="admin-sidebar-section-title">MAIN PAGES</div>
+      <div
+        className="admin-sidebar-inner"
+        style={{ display: "flex", flexDirection: "column", height: "100%" }}
+      >
+        <div>
+          {/* <div className="admin-sidebar-section-title">MAIN PAGES</div> */}
+          <div className="admin-sidebar-menu">
+            {menuItems.map((item) => {
+              const isActive = activeKey === item.key;
 
-        <div className="admin-sidebar-menu">
-          {menuItems.map((item) => {
-            const isActive = activeKey === item.key;
-            const ArrowShown = item.arrow;
+              return (
+                <div key={item.key} className="admin-sidebar-row">
+                  {(() => {
+                    const ButtonComponent = isActive
+                      ? MenuButtonActive
+                      : MenuButton;
+                    return (
+                      <ButtonComponent
+                        type="button"
+                        onClick={() => {
+                          setActiveKey(item.key);
+                          if (toggleSidebar) toggleSidebar();
+                        }}
+                        className={
+                          isActive
+                            ? "admin-sidebar-item admin-sidebar-item--active"
+                            : "admin-sidebar-item"
+                        }
+                      >
+                        <IconWrap>
+                          <item.Icon style={{ fontSize: 20 }} />
+                        </IconWrap>
 
-            const badge = renderBadge(item);
-            const badgeNode = item.badge ? (
-              <span className={"admin-sidebar-badgeWrap " + item.key}>
-                {badge}
-              </span>
-            ) : null;
+                        <span className="admin-sidebar-label">
+                          {item.label}
+                        </span>
 
-            return (
-              <div key={item.key} className="admin-sidebar-row">
-                {(() => {
-                  const ButtonComponent = isActive
-                    ? MenuButtonActive
-                    : MenuButton;
+                        <div className="admin-sidebar-spacer" />
 
-                  return (
-                    <ButtonComponent
-                      type="button"
-                      onClick={() => {
-                        setActiveKey(item.key);
-                        if (toggleSidebar) toggleSidebar();
-                      }}
-                      className={
-                        isActive
-                          ? "admin-sidebar-item admin-sidebar-item--active"
-                          : "admin-sidebar-item"
-                      }
-                    >
-                      <IconWrap>
-                        <item.Icon style={{ fontSize: 20 }} />
-                      </IconWrap>
+                        {/* Badge placement rules */}
+                        {item.arrow ? (
+                          <div className="admin-sidebar-rightGroup">
+                            {item.badge ? (
+                              <span className="admin-sidebar-badge">
+                                {item.badge.type === "count"
+                                  ? item.badge.value
+                                  : item.badge.type === "hot"
+                                    ? "HOT"
+                                    : "NEW"}
+                              </span>
+                            ) : null}
+                            <span className="admin-sidebar-arrow">›</span>
+                          </div>
+                        ) : (
+                          <div className="admin-sidebar-rightGroup">
+                            {item.badge ? (
+                              <span className="admin-sidebar-badge admin-sidebar-badge--farRight">
+                                {item.badge.type === "count"
+                                  ? item.badge.value
+                                  : item.badge.type === "hot"
+                                    ? "HOT"
+                                    : "NEW"}
+                              </span>
+                            ) : null}
+                          </div>
+                        )}
+                      </ButtonComponent>
+                    );
+                  })()}
+                </div>
+              );
+            })}
+          </div>
+        </div>
 
-                      <span className="admin-sidebar-label">{item.label}</span>
-
-                      <div className="admin-sidebar-spacer" />
-
-                      {/* Badge placement rules */}
-                      {item.arrow ? (
-                        <div className="admin-sidebar-rightGroup">
-                          {item.badge ? (
-                            <span className="admin-sidebar-badge">
-                              {item.badge.type === "count"
-                                ? item.badge.value
-                                : item.badge.type === "hot"
-                                  ? "HOT"
-                                  : "NEW"}
-                            </span>
-                          ) : null}
-                          <span className="admin-sidebar-arrow">›</span>
-                        </div>
-                      ) : (
-                        <div className="admin-sidebar-rightGroup">
-                          {item.badge ? (
-                            <span className="admin-sidebar-badge admin-sidebar-badge--farRight">
-                              {item.badge.type === "count"
-                                ? item.badge.value
-                                : item.badge.type === "hot"
-                                  ? "HOT"
-                                  : "NEW"}
-                            </span>
-                          ) : null}
-                        </div>
-                      )}
-                    </ButtonComponent>
-                  );
-                })()}
-              </div>
-            );
-          })}
+        {/* Logout below Blank Page */}
+        <div className="admin-sidebar-bottom" style={{ paddingTop: 10 }}>
+          <div className="admin-sidebar-row">
+            <button
+              type="button"
+              className="admin-sidebar-item"
+              style={{
+                width: "100%",
+                border: "none",
+                background: "transparent",
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+                padding: "12px 16px",
+                borderRadius: 14,
+                cursor: "pointer",
+                color: "inherit",
+              }}
+              onClick={() => {
+                if (toggleSidebar) toggleSidebar();
+                navigate("/");
+              }}
+            >
+              <IconWrap
+                style={{
+                  backgroundColor: "rgba(59,130,246,0.08)",
+                  color: "#111827",
+                }}
+              >
+                <FiLogOut size={18} />
+              </IconWrap>
+              <span className="admin-sidebar-label">Logout</span>
+              <div className="admin-sidebar-spacer" />
+            </button>
+          </div>
         </div>
       </div>
     </SidebarRoot>
@@ -296,7 +328,7 @@ export default function SideBar({ sidebarExpanded, toggleSidebar }) {
         ModalProps={{ keepMounted: true }}
         PaperProps={{
           sx: {
-            width: 280,
+            width: drawerWidthTablet,
             background:
               muiTheme.palette.mode === "dark"
                 ? "rgba(15,23,42,0.95)"

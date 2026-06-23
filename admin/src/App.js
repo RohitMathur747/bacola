@@ -23,8 +23,8 @@ const App = () => {
 
         <div className="content">
           <Routes>
-            <Route to={"/"} exact={true} element={<Dashboard />} />
-            <Route to={"/dashboard"} exact={true} element={<Dashboard />} />
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </div>
       </div>

@@ -447,3 +447,290 @@ body {
   background-color: rgb(39, 32, 245);
   color: #fff;
 }
+
+/* =============================
+   Ecommerce Dashboard
+=============================*/
+.ecom-page {
+  padding: 22px 26px;
+}
+
+.ecom-topHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.ecom-title {
+  font-weight: 900 !important;
+  color: rgba(17, 24, 39, 0.95) !important;
+}
+
+.ecom-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.ecom-breadcrumb {
+  color: rgba(17, 24, 39, 0.55);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.ecom-breadcrumbSep {
+  color: rgba(17, 24, 39, 0.35);
+  font-weight: 900;
+}
+
+.ecom-breadcrumb--active {
+  color: rgba(17, 24, 39, 0.95);
+}
+
+.ecom-statsGrid {
+  display: grid;
+  grid-template-columns: 30% 30% 40%;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.ecom-part {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ecom-card {
+  position: relative;
+  border-radius: 20px !important;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.12);
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.ecom-card:hover {
+  transform: translateY(-5px);
+}
+
+.ecom-card__pattern {
+  position: absolute;
+  opacity: 0.1;
+  color: #e9ecef;
+  background-color: #16a34a;
+  pointer-events: none;
+}
+
+.ecom-card__topRow {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 18px 6px;
+  gap: 10px;
+}
+
+.ecom-card__title {
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-weight: 800 !important;
+}
+
+.ecom-card__topIcon {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 22px;
+}
+
+.ecom-card__valueRow {
+  position: relative;
+  z-index: 1;
+  padding: 6px 18px 10px;
+}
+
+.ecom-card__value {
+  color: #fff !important;
+  font-size: 34px !important;
+  font-weight: 900 !important;
+}
+
+.ecom-card__bottomRow {
+  position: relative;
+  z-index: 1;
+  padding: 8px 18px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ecom-card__bottomLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ecom-card__badge {
+  font-weight: 900 !important;
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.ecom-card__footerText {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 800 !important;
+}
+
+.ecom-card__more {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.ecom-card--green {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+}
+
+.ecom-card--blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.ecom-card--pink {
+  background: linear-gradient(135deg, #f43f5e 0%, #ec4899 100%);
+}
+
+.ecom-card--orange {
+  background: linear-gradient(135deg, #f59e0b 0%, #f97316 55%, #f43f5e 100%);
+}
+
+.ecom-salesCard {
+  position: relative;
+  height: 100%;
+  min-height: 318px;
+  border-radius: 20px !important;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, #0b2a5b 0%, #071a3a 100%);
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.ecom-salesCard:hover {
+  transform: translateY(-5px);
+}
+
+.ecom-salesCard__pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.28) 0,
+    rgba(255, 255, 255, 0.28) 3px,
+    transparent 3px,
+    transparent 16px
+  );
+  pointer-events: none;
+}
+
+.ecom-salesCard__top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 18px 18px 8px;
+}
+
+.ecom-salesCard__label {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.ecom-salesCard__amount {
+  color: #fff;
+  font-weight: 900;
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+.ecom-salesCard__growth {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-weight: 900;
+}
+
+.ecom-salesCard__trendIcon {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.ecom-salesCard__growthText {
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.ecom-salesCard__mid {
+  position: relative;
+  z-index: 1;
+  padding: 4px 18px 8px;
+}
+
+.ecom-salesCard__midValue {
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-weight: 900 !important;
+}
+
+.ecom-salesCard__midLabel {
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-weight: 800 !important;
+}
+
+.ecom-sales-chartWrap {
+  position: relative;
+  z-index: 1;
+  height: 220px;
+  width: 100%;
+  padding: 0 12px 14px;
+}
+
+@media (max-width: 1024px) {
+  .ecom-page {
+    padding: 18px 16px;
+  }
+
+  .ecom-statsGrid {
+    grid-template-columns: 50% 50%;
+  }
+
+  .ecom-part--3 {
+    grid-column: 1 / -1;
+  }
+
+  .ecom-topHeader {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .ecom-statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ecom-breadcrumbs {
+    justify-content: flex-start;
+  }
+
+  .ecom-title {
+    font-size: 26px !important;
+  }
+}

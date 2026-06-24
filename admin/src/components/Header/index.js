@@ -20,6 +20,7 @@ import {
   FiLogOut,
 } from "react-icons/fi";
 
+import { Button } from "@mui/material";
 import profileImg from "../../assests/user.jpg";
 import { adminNotificationMessages } from "./DummyData";
 import MessageDropdown from "./MessageDropdown";
@@ -30,6 +31,9 @@ const Header = ({ sidebarExpanded, toggleSidebar }) => {
   const [isDark, setIsDark] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const navigate = useNavigate();
+
+  // Replace with real auth later
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const dropdownRef = useRef(null);
 
@@ -114,13 +118,13 @@ const Header = ({ sidebarExpanded, toggleSidebar }) => {
               )}
             </button>
 
-            <button
+            {/* <button
               type="button"
               className="header-icon-btn"
               aria-label="Language"
             >
               <FiGlobe size={20} />
-            </button>
+            </button> */}
 
             {/* Cart dropdown */}
             <div className="header-dropdown-wrap">
@@ -260,6 +264,14 @@ const Header = ({ sidebarExpanded, toggleSidebar }) => {
                 </div>
               )}
             </div>
+
+            {!isLoggedIn && (
+              <div className="btn-blue">
+                <Button onClick={() => navigate("/login")} aria-label="Sign In">
+                  Sign In
+                </Button>
+              </div>
+            )}
           </div>
 
           {/* Part 4: Admin Profile */}

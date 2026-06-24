@@ -502,6 +502,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  max-width: 380px;
 }
 
 .ecom-card {
@@ -658,8 +659,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
-  padding: 18px 18px 8px;
+  gap: 10px;
+  padding: 15px 15px 5px;
 }
 
 .ecom-salesCard__label {
@@ -1003,4 +1004,43 @@ body {
   .products-table {
     min-width: 980px;
   }
+}
+
+/* =============================
+   Selling Products Pagination
+=============================*/
+.selling-products-pagination {
+  display: flex;
+  justify-content: flex-end;
+  padding: 14px 0 6px;
+}
+
+.selling-products-pagination-pages {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.selling-products-page-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(17, 24, 39, 0.14);
+  background: #ffffff;
+  cursor: pointer;
+  font-weight: 1000;
+  color: rgba(17, 24, 39, 0.75);
+  transition: all 0.2s ease;
+}
+
+.selling-products-page-btn:hover {
+  background: #f3f4f6;
+  transform: translateY(-1px);
+}
+
+.selling-products-page-btn--active {
+  background: #0b2a5b;
+  border-color: #0b2a5b;
+  color: #ffffff;
 }

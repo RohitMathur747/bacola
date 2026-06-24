@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 
 const SellingProducts = () => {
   const products = [
@@ -98,6 +98,86 @@ const SellingProducts = () => {
       orders: 180,
       sales: "₹18 L",
     },
+    {
+      uid: "SP-1002",
+      name: "Women Floral Dress",
+      description: "Light & breathable",
+      category: "Women Clothing",
+      brand: "Zara",
+      image:
+        "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=96&h=96&q=80",
+      oldPrice: "₹3,999",
+      newPrice: "₹2,999",
+      stock: 25,
+      rating: 4.8,
+      ratingCount: 22,
+      orders: 250,
+      sales: "₹25 L",
+    },
+    {
+      uid: "SP-1003",
+      name: "Denim Jacket",
+      description: "Classic fit",
+      category: "Men Clothing",
+      brand: "Levis",
+      image:
+        "https://images.unsplash.com/photo-1520975693414-3e1a8b0ad2fb?auto=format&fit=crop&w=96&h=96&q=80",
+      oldPrice: "₹4,999",
+      newPrice: "₹3,799",
+      stock: 45,
+      rating: 4.7,
+      ratingCount: 18,
+      orders: 420,
+      sales: "₹42 L",
+    },
+    {
+      uid: "SP-1004",
+      name: "Winter Hoodie",
+      description: "Warm fleece",
+      category: "Men Clothing",
+      brand: "H&M",
+      image:
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=96&h=96&q=80",
+      oldPrice: "₹2,899",
+      newPrice: "₹2,199",
+      stock: 70,
+      rating: 4.6,
+      ratingCount: 15,
+      orders: 310,
+      sales: "₹31 L",
+    },
+    {
+      uid: "SP-1005",
+      name: "Running Shoes",
+      description: "Cushioned comfort",
+      category: "Footwear",
+      brand: "Nike",
+      image:
+        "https://images.unsplash.com/photo-1542291026-04c8b4c59f8a?auto=format&fit=crop&w=96&h=96&q=80",
+      oldPrice: "₹5,499",
+      newPrice: "₹4,499",
+      stock: 60,
+      rating: 4.9,
+      ratingCount: 30,
+      orders: 520,
+      sales: "₹52 L",
+    },
+    {
+      uid: "SP-1006",
+      name: "Leather Handbag",
+      description: "Premium finish",
+      category: "Accessories",
+      brand: "Gucci",
+      image:
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6b05?auto=format&fit=crop&w=96&h=96&q=80",
+      oldPrice: "₹8,999",
+      newPrice: "₹7,499",
+      stock: 20,
+      rating: 5.0,
+      ratingCount: 12,
+      orders: 180,
+      sales: "₹18 L",
+    },
   ];
 
   const getStockBadgeClass = (stock) => {
@@ -105,6 +185,17 @@ const SellingProducts = () => {
     if (stock >= 20) return "stock-badge stock-badge--orange";
     return "stock-badge stock-badge--red";
   };
+
+  const pageSize = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.max(1, Math.ceil(products.length / pageSize));
+
+  const paginatedProducts = useMemo(() => {
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    return products.slice(startIndex, endIndex);
+  }, [currentPage, products]);
 
   return (
     <div className="selling-products-main">
@@ -156,7 +247,7 @@ const SellingProducts = () => {
               </tr>
             </thead>
             <tbody>
-              {products.map((p) => (
+              {paginatedProducts.map((p) => (
                 <tr key={p.uid}>
                   <td>{p.uid}</td>
 
@@ -233,6 +324,33 @@ const SellingProducts = () => {
               ))}
             </tbody>
           </table>
+
+          <div
+            className="selling-products-pagination"
+            role="navigation"
+            aria-label="Pagination"
+          >
+            <div className="selling-products-pagination-pages">
+              {Array.from({ length: totalPages }).map((_, idx) => {
+                const pageNum = idx + 1;
+                return (
+                  <button
+                    key={pageNum}
+                    type="button"
+                    className={
+                      pageNum === currentPage
+                        ? "selling-products-page-btn selling-products-page-btn--active"
+                        : "selling-products-page-btn"
+                    }
+                    onClick={() => setCurrentPage(pageNum)}
+                    aria-current={pageNum === currentPage ? "page" : undefined}
+                  >
+                    {pageNum}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </div>

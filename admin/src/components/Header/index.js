@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useRef } from "react";
+import React, { useMemo, useState, useEffect, useRef, useContext } from "react";
 
 import logo from "../../assests/logo.jpg";
 import { useNavigate } from "react-router-dom";
@@ -24,6 +24,7 @@ import profileImg from "../../assests/user.jpg";
 import { adminNotificationMessages } from "./DummyData";
 import MessageDropdown from "./MessageDropdown";
 import SearchBox from "../SearchBox";
+import { MyContext } from "../../App";
 
 const Header = ({ sidebarExpanded, toggleSidebar }) => {
   const [isDark, setIsDark] = useState(false);
@@ -31,6 +32,8 @@ const Header = ({ sidebarExpanded, toggleSidebar }) => {
   const navigate = useNavigate();
 
   const dropdownRef = useRef(null);
+
+  const context = useContext(MyContext);
 
   useEffect(() => {
     const onDown = (e) => {

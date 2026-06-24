@@ -747,3 +747,260 @@ body {
     font-size: 26px !important;
   }
 }
+
+/* =============================
+   Selling Products (Best Selling)
+=============================*/
+
+.selling-products-main {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
+}
+
+.selling-products-main h3 {
+  font-weight: 900;
+  color: rgba(17, 24, 39, 0.95);
+  margin-bottom: 14px;
+}
+
+.selling-product-part1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.show-by,
+.category-by {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+  color: rgba(17, 24, 39, 0.85);
+}
+
+.show-by select,
+.category-by select {
+  height: 42px;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(17, 24, 39, 0.1);
+  background: #f3f4f6;
+  outline: none;
+  color: #111827;
+  font-weight: 800;
+  transition: all 0.2s ease;
+}
+
+.show-by select:focus,
+.category-by select:focus {
+  background: #ffffff;
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+.selling-product-part2 {
+  width: 100%;
+}
+
+.products-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 980px;
+}
+
+.products-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #0b2a5b; /* dark blue */
+  color: #ffffff;
+  font-weight: 900;
+  height: 60px;
+  white-space: nowrap;
+  text-align: left;
+  padding: 14px 12px;
+}
+
+.products-table thead th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.products-table thead th:last-child {
+  border-top-right-radius: 14px;
+}
+
+.products-table tbody td {
+  height: 80px;
+  padding: 12px 12px;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+  vertical-align: middle;
+  color: rgba(17, 24, 39, 0.85);
+  font-weight: 800;
+}
+
+.products-table tbody tr {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.products-table tbody tr:hover {
+  background: rgba(59, 130, 246, 0.04);
+  transform: translateY(-2px);
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+}
+
+.product-name {
+  font-weight: 1000;
+  color: rgba(17, 24, 39, 0.95);
+  line-height: 1.1;
+}
+
+.product-description {
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(17, 24, 39, 0.55);
+  font-weight: 800;
+  max-width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.price-old {
+  color: rgba(17, 24, 39, 0.5);
+  text-decoration: line-through;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.price-new {
+  color: #0f172a;
+  font-weight: 1000;
+  font-size: 14px;
+}
+
+.stock-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-weight: 1000;
+  font-size: 12px;
+  border: 1px solid transparent;
+}
+
+.stock-badge--green {
+  background: rgba(34, 197, 94, 0.12);
+  color: #16a34a;
+  border-color: rgba(34, 197, 94, 0.25);
+}
+
+.stock-badge--orange {
+  background: rgba(245, 158, 11, 0.14);
+  color: #d97706;
+  border-color: rgba(245, 158, 11, 0.25);
+}
+
+.stock-badge--red {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+.rating-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 1000;
+}
+
+.rating-star {
+  color: #f59e0b;
+  font-size: 13px;
+}
+
+.action-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.action-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  font-size: 16px;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+}
+
+.action-btn--view {
+  color: #2563eb;
+}
+
+.action-btn--view:hover {
+  background: rgba(37, 99, 235, 0.12);
+}
+
+.action-btn--edit {
+  color: #16a34a;
+}
+
+.action-btn--edit:hover {
+  background: rgba(22, 163, 74, 0.12);
+}
+
+.action-btn--delete {
+  color: #dc2626;
+}
+
+.action-btn--delete:hover {
+  background: rgba(220, 38, 38, 0.12);
+}
+
+@media (max-width: 900px) {
+  .products-table {
+    min-width: 980px;
+  }
+}

@@ -8,6 +8,7 @@ import {
   MoreVert,
   TrendingUp,
 } from "@mui/icons-material";
+import SellingProducts from "./SellingProductsTable/index.js";
 
 import { Line } from "react-chartjs-2";
 import {
@@ -21,6 +22,7 @@ import {
 } from "chart.js";
 
 import "../../App.css";
+import SellProduct from "./SellingProductsTable";
 
 ChartJS.register(
   CategoryScale,
@@ -229,6 +231,9 @@ const Dashboard = () => {
           </Card>
         </div>
       </div>
+
+      {/* Selling Products  */}
+      <SellProduct />
     </div>
   );
 };

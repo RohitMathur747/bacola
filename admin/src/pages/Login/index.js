@@ -1,8 +1,10 @@
 import React, { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { MdEmail, MdLock, MdVisibility, MdVisibilityOff } from "react-icons/md";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -99,7 +101,17 @@ const Login = () => {
 
             <div className="loginSubtitle">
               Don't Have an Account ?
-              <span className="forgotPassword"> Register</span>
+              <span
+                className="forgotPassword"
+                role="button"
+                tabIndex={0}
+                onClick={() => navigate("/register")}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") navigate("/register");
+                }}
+              >
+                Register
+              </span>
             </div>
           </form>
         </div>

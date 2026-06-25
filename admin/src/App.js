@@ -6,12 +6,15 @@ import Header from "./components/Header";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SideBar from "./components/Sidebar";
+import Register from "./pages/Register";
 
 const MyContext = createContext();
 
 function AppLayout() {
   const location = useLocation();
   const isLoginRoute = location.pathname === "/login";
+  const isRegisterRoute = location.pathname === "/register";
+  const noChromeRoute = isLoginRoute || isRegisterRoute;
 
   // read context values from provider in parent
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -20,14 +23,14 @@ function AppLayout() {
 
   return (
     <>
-      {!isLoginRoute && (
+      {!noChromeRoute && (
         <Header
           sidebarExpanded={sidebarExpanded}
           toggleSidebar={() => setSidebarExpanded((v) => !v)}
         />
       )}
 
-      {!isLoginRoute ? (
+      {!noChromeRoute ? (
         <div className="main d-flex">
           <SideBar
             sidebarExpanded={sidebarExpanded}
@@ -45,6 +48,7 @@ function AppLayout() {
         <div className="content" style={{ padding: 0 }}>
           <Routes>
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </div>
       )}

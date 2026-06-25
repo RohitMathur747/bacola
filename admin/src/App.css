@@ -1020,6 +1020,7 @@ body {
 =============================*/
 
 .loginSection {
+  width: 100%;
   min-height: 100vh;
   min-height: calc(100vh - 76px);
   display: flex;
@@ -1287,6 +1288,309 @@ body {
   }
   .loginCard {
     padding: 26px;
+  }
+}
+
+/* =============================
+   Register Page
+=============================*/
+
+.main-Register {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+}
+
+.register-part1 {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+}
+
+.register-part2 {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 22px;
+}
+
+.register-content {
+  max-width: 520px;
+  color: rgba(15, 23, 42, 1);
+}
+
+.register-title {
+  font-size: 45px;
+  font-weight: 1000;
+  color: rgba(15, 23, 42, 0.95);
+  line-height: 1.15;
+  letter-spacing: -0.2px;
+  margin-bottom: 14px;
+}
+
+.register-description {
+  font-size: 20px;
+  color: rgba(15, 23, 42, 0.6);
+  line-height: 1.5;
+  font-weight: 700;
+  max-width: 720px;
+  margin-bottom: 22px;
+}
+
+.homeBtn {
+  height: 50px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 900;
+  transition: all 0.3s ease;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
+  text-decoration: none;
+}
+
+.homeBtn:hover {
+  transform: translateY(-3px);
+  background: #1d4ed8;
+}
+
+.registerCard {
+  width: 100%;
+  max-width: 450px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 18px 50px rgba(16, 24, 40, 0.12);
+  border: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.logoCircle {
+  width: 50px;
+  height: 50px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 45%, #60a5fa 100%);
+  color: #ffffff;
+  font-weight: 900;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+}
+
+.loginTitle {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 1000;
+  color: rgba(15, 23, 42, 0.95);
+  margin-bottom: 10px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.inputGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  background: rgba(255, 255, 255, 0.85);
+  transition: all 0.3s ease;
+}
+
+.inputGroup:focus-within {
+  border-color: rgba(59, 130, 246, 0.45);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+  background: #ffffff;
+}
+
+.inputIcon {
+  width: 22px;
+  height: 22px;
+  color: rgba(59, 130, 246, 0.95);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.inputField {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.92);
+}
+
+.inputField::placeholder {
+  color: rgba(15, 23, 42, 0.45);
+  font-weight: 700;
+}
+
+.passwordToggle {
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(15, 23, 42, 0.55);
+  transition: all 0.3s ease;
+}
+
+.passwordToggle:hover {
+  background: rgba(59, 130, 246, 0.08);
+  color: rgba(29, 78, 216, 0.95);
+}
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.signInBtn {
+  height: 50px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
+}
+
+.signInBtn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.signInBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 4px 0;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: rgba(15, 23, 42, 0.12);
+}
+
+.dividerText {
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.55);
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+
+.googleBtn {
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #2563eb;
+  font-weight: 800;
+}
+
+.googleBtnText {
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.googleBtn:hover {
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.forgotPassword {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #2563eb;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.forgotPassword:hover {
+  text-decoration: underline;
+}
+
+.main-Register .loginSubtitle {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.6);
+}
+
+@media (max-width: 1024px) {
+  .register-part1 {
+    width: 60%;
+  }
+  .register-part2 {
+    width: 40%;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-Register {
+    flex-direction: column;
+  }
+  .register-part1,
+  .register-part2 {
+    width: 100%;
+    padding: 30px 18px;
+  }
+  .register-title {
+    font-size: 28px;
   }
 }
 

@@ -10,6 +10,179 @@ body {
   background: #ebe9e9;
 }
 
+/* =============================
+   Global Dark Theme Overrides
+   Triggered by ThemeProvider: document.documentElement[data-theme="dark"]
+============================= */
+[data-theme="dark"] {
+  color: #ffffff;
+}
+
+[data-theme="dark"] body {
+  background: #0b0f17;
+}
+
+/* Force icons to white across the app (covers MUI icons + svg + common icon wrappers) */
+[data-theme="dark"] svg,
+[data-theme="dark"] .MuiSvgIcon-root,
+[data-theme="dark"] .react-icons,
+[data-theme="dark"] .react-icons svg,
+[data-theme="dark"] i {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Header */
+[data-theme="dark"] .dashboard-header {
+  background: rgba(15, 23, 42, 0.85);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .header-icon-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .header-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.14) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .header-profile-name,
+[data-theme="dark"] .header-profile-email,
+[data-theme="dark"] .logo-text {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .header-search-input {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .header-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+[data-theme="dark"] .header-search-icon {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+[data-theme="dark"] .header-dropdown,
+[data-theme="dark"] .header-dropdown--admin {
+  background: #0f172a !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-theme="dark"] .header-dropdown-head,
+[data-theme="dark"] .header-dropdown-item,
+[data-theme="dark"] .header-notif-name,
+[data-theme="dark"] .header-notif-email,
+[data-theme="dark"] .header-notif-message {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .header-dropdown-item-ic {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .header-dropdown-item:hover,
+[data-theme="dark"] .header-notif-row:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Sidebar */
+[data-theme="dark"] .admin-sidebar {
+  background: rgba(0, 0, 0, 0.72) !important;
+}
+
+[data-theme="dark"] .admin-sidebar-label,
+[data-theme="dark"] .admin-sidebar-arrow,
+[data-theme="dark"] .admin-sidebar-item {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .admin-sidebar-item--active,
+[data-theme="dark"] .admin-sidebar-item.admin-sidebar-item--active {
+  background: rgba(59, 130, 246, 0.25) !important;
+}
+
+[data-theme="dark"] .admin-sidebar-rightGroup {
+  color: #ffffff !important;
+}
+
+/* Dropdown/Popup/menus in header use MUI Menu: reinforce paper */
+[data-theme="dark"] .MuiPaper-root {
+  color: #ffffff;
+}
+
+/* Dashboard text */
+[data-theme="dark"] .ecom-page {
+  background: transparent;
+}
+
+[data-theme="dark"] .ecom-topHeader,
+[data-theme="dark"] .ecom-title,
+[data-theme="dark"] .ecom-breadcrumb,
+[data-theme="dark"] .ecom-breadcrumbSep {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .ecom-breadcrumb {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+[data-theme="dark"] .ecom-breadcrumb--active {
+  color: #ffffff !important;
+}
+
+/* Selling products table */
+[data-theme="dark"] .selling-products-main {
+  background: rgba(15, 23, 42, 0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .selling-products-main h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .show-by,
+[data-theme="dark"] .category-by {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+[data-theme="dark"] .show-by select,
+[data-theme="dark"] .category-by select {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .products-table tbody td {
+  color: rgba(255, 255, 255, 0.88) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .products-table tbody tr:hover {
+  background: rgba(59, 130, 246, 0.18) !important;
+}
+
+[data-theme="dark"] .selling-products-page-btn {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+[data-theme="dark"] .selling-products-page-btn:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-theme="dark"] .selling-products-page-btn--active {
+  background: #0b2a5b !important;
+  border-color: #0b2a5b !important;
+  color: #ffffff !important;
+}
+
 /* -----------------------------
    Dashboard Header
 ------------------------------*/

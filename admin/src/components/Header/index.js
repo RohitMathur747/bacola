@@ -27,8 +27,12 @@ import MessageDropdown from "./MessageDropdown";
 import SearchBox from "../SearchBox";
 import { MyContext } from "../../App";
 
+import { useThemeMode } from "../../theme";
+
 const Header = ({ sidebarExpanded, toggleSidebar }) => {
-  const [isDark, setIsDark] = useState(false);
+  const { mode, toggle } = useThemeMode();
+  const isDark = mode === "dark";
+
   const [openDropdown, setOpenDropdown] = useState(null);
   const navigate = useNavigate();
 
@@ -65,7 +69,7 @@ const Header = ({ sidebarExpanded, toggleSidebar }) => {
     [],
   );
 
-  const toggleTheme = () => setIsDark((v) => !v);
+  const toggleTheme = () => toggle();
 
   return (
     <header className="dashboard-header">

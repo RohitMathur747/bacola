@@ -32,12 +32,10 @@ const Header = ({ sidebarExpanded, toggleSidebar }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const navigate = useNavigate();
 
-  // Replace with real auth later
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   const dropdownRef = useRef(null);
 
   const context = useContext(MyContext);
+  const { isLogin } = context;
 
   useEffect(() => {
     const onDown = (e) => {
@@ -265,7 +263,7 @@ const Header = ({ sidebarExpanded, toggleSidebar }) => {
               )}
             </div>
 
-            {!isLoggedIn && (
+            {!isLogin && (
               <div className="btn-blue">
                 <Button onClick={() => navigate("/login")} aria-label="Sign In">
                   Sign In
@@ -275,76 +273,78 @@ const Header = ({ sidebarExpanded, toggleSidebar }) => {
           </div>
 
           {/* Part 4: Admin Profile */}
-          <div
-            className="header-profile header-dropdown-wrap"
-            ref={dropdownRef}
-            aria-label="Admin profile"
-          >
-            <div className="header-profile-main">
-              <img
-                className="header-profile-avatar"
-                src={profileImg}
-                alt="Admin"
-              />
-              <div className="header-profile-info">
-                <div className="header-profile-name">Admin User</div>
-                <div className="header-profile-email">admin@example.com</div>
-              </div>
-            </div>
-
-            <button
-              type="button"
-              className="header-dropdown-toggle"
-              aria-label="Admin menu"
-              aria-expanded={openDropdown === "admin"}
-              onClick={() =>
-                setOpenDropdown((v) => (v === "admin" ? null : "admin"))
-              }
+          {isLogin && (
+            <div
+              className="header-profile header-dropdown-wrap"
+              ref={dropdownRef}
+              aria-label="Admin profile"
             >
-              <MdOutlineAccountCircle size={18} />
-            </button>
-
-            {openDropdown === "admin" && (
-              <div
-                className="header-dropdown header-dropdown--admin"
-                role="menu"
-              >
-                <div className="header-dropdown-head">
-                  <MdOutlineAccountCircle size={16} />
-                  <span>Admin</span>
+              <div className="header-profile-main">
+                <img
+                  className="header-profile-avatar"
+                  src={profileImg}
+                  alt="Admin"
+                />
+                <div className="header-profile-info">
+                  <div className="header-profile-name">Admin User</div>
+                  <div className="header-profile-email">admin@example.com</div>
                 </div>
-
-                <button className="header-dropdown-item" type="button">
-                  <span className="header-dropdown-item-ic">
-                    <FiUser size={16} />
-                  </span>
-                  <span>My account</span>
-                </button>
-
-                {/* Placeholder - kept to match original project */}
-                <button className="header-dropdown-item" type="button">
-                  <span className="header-dropdown-item-ic">
-                    <MdOutlineSettings size={16} />
-                  </span>
-                  <span>Settings</span>
-                </button>
-
-                <button
-                  className="header-dropdown-item header-dropdown-item--danger"
-                  type="button"
-                  onClick={() => {
-                    setOpenDropdown(null);
-                    navigate("/");
-                  }}
-                >
-                  <span className="header-dropdown-item-ic">
-                    <FiLogOut size={16} />
-                  </span>
-                  <span>Logout</span>
-                </button>
               </div>
-            )}
-          </div>
+
+              <button
+                type="button"
+                className="header-dropdown-toggle"
+                aria-label="Admin menu"
+                aria-expanded={openDropdown === "admin"}
+                onClick={() =>
+                  setOpenDropdown((v) => (v === "admin" ? null : "admin"))
+                }
+              >
+                <MdOutlineAccountCircle size={18} />
+              </button>
+
+              {openDropdown === "admin" && (
+                <div
+                  className="header-dropdown header-dropdown--admin"
+                  role="menu"
+                >
+                  <div className="header-dropdown-head">
+                    <MdOutlineAccountCircle size={16} />
+                    <span>Admin</span>
+                  </div>
+
+                  <button className="header-dropdown-item" type="button">
+                    <span className="header-dropdown-item-ic">
+                      <FiUser size={16} />
+                    </span>
+                    <span>My account</span>
+                  </button>
+
+                  {/* Placeholder - kept to match original project */}
+                  <button className="header-dropdown-item" type="button">
+                    <span className="header-dropdown-item-ic">
+                      <MdOutlineSettings size={16} />
+                    </span>
+                    <span>Settings</span>
+                  </button>
+
+                  <button
+                    className="header-dropdown-item header-dropdown-item--danger"
+                    type="button"
+                    onClick={() => {
+                      setOpenDropdown(null);
+                      navigate("/");
+                    }}
+                  >
+                    <span className="header-dropdown-item-ic">
+                      <FiLogOut size={16} />
+                    </span>
+                    <span>Logout</span>
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </header>

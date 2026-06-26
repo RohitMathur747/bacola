@@ -2,6 +2,9 @@ import React, { createContext, useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import ProductsList from "./pages/ProductsList";
+import ProductsUpload from "./pages/ProductsUpload";
+import ProductsView from "./pages/ProductsView";
 import Header from "./components/Header";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -41,6 +44,11 @@ function AppLayout() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/login" element={<Login />} />
+
+              {/* Products */}
+              <Route path="/products/list" element={<ProductsList />} />
+              <Route path="/products/order" element={<ProductsUpload />} />
+              <Route path="/products/view" element={<ProductsView />} />
             </Routes>
           </div>
         </div>

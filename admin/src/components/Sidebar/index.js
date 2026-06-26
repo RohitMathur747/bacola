@@ -74,6 +74,55 @@ const badgeSx = {
   },
 };
 
+function BadgeByType({ type, value }) {
+  if (type === "hot") {
+    return (
+      <Badge
+        {...badgeSx}
+        badgeContent={"HOT"}
+        sx={{
+          "& .MuiBadge-badge": {
+            backgroundColor: "#ef4444",
+            color: "#fff",
+          },
+        }}
+      />
+    );
+  }
+
+  if (type === "new") {
+    return (
+      <Badge
+        {...badgeSx}
+        badgeContent={"NEW"}
+        sx={{
+          "& .MuiBadge-badge": {
+            backgroundColor: "#ec4899",
+            color: "#fff",
+          },
+        }}
+      />
+    );
+  }
+
+  if (type === "count") {
+    return (
+      <Badge
+        {...badgeSx}
+        badgeContent={String(value)}
+        sx={{
+          "& .MuiBadge-badge": {
+            backgroundColor: "#3b82f6",
+            color: "#fff",
+          },
+        }}
+      />
+    );
+  }
+
+  return null;
+}
+
 export default function SideBar({ sidebarExpanded, toggleSidebar }) {
   const muiTheme = useTheme();
   const navigate = useNavigate();
@@ -95,13 +144,25 @@ export default function SideBar({ sidebarExpanded, toggleSidebar }) {
         arrow: false,
         badge: { type: "hot" },
       },
+
+      // Products submenu
       {
         key: "products",
         label: "Products",
         Icon: InventoryIcon,
-        arrow: false,
+        arrow: true,
         badge: { type: "new" },
+        children: [
+          { key: "products_list", label: "Product List", to: "/products/list" },
+          {
+            key: "products_order",
+            label: "Product Order",
+            to: "/products/order",
+          },
+          { key: "products_view", label: "Product View", to: "/products/view" },
+        ],
       },
+
       {
         key: "invoices",
         label: "Invoices",
@@ -136,58 +197,6 @@ export default function SideBar({ sidebarExpanded, toggleSidebar }) {
     [],
   );
 
-  const renderBadge = (item) => {
-    if (!item.badge) return null;
-
-    if (item.badge.type === "hot") {
-      return (
-        <Badge
-          {...badgeSx}
-          badgeContent={"HOT"}
-          sx={{
-            "& .MuiBadge-badge": {
-              backgroundColor: "#ef4444",
-              color: "#fff",
-            },
-          }}
-        />
-      );
-    }
-
-    if (item.badge.type === "new") {
-      return (
-        <Badge
-          {...badgeSx}
-          badgeContent={"NEW"}
-          sx={{
-            "& .MuiBadge-badge": {
-              backgroundColor: "#ec4899",
-              color: "#fff",
-            },
-          }}
-        />
-      );
-    }
-
-    if (item.badge.type === "count") {
-      const n = item.badge.value;
-      return (
-        <Badge
-          {...badgeSx}
-          badgeContent={String(n)}
-          sx={{
-            "& .MuiBadge-badge": {
-              backgroundColor: "#3b82f6",
-              color: "#fff",
-            },
-          }}
-        />
-      );
-    }
-
-    return null;
-  };
-
   const drawerContent = (
     <SidebarRoot
       className="admin-sidebar"
@@ -206,77 +215,113 @@ export default function SideBar({ sidebarExpanded, toggleSidebar }) {
         style={{ display: "flex", flexDirection: "column", height: "100%" }}
       >
         <div>
-          {/* <div className="admin-sidebar-section-title">MAIN PAGES</div> */}
           <div className="admin-sidebar-menu">
             {menuItems.map((item) => {
               const isActive = activeKey === item.key;
+              const hasChildren =
+                Array.isArray(item.children) && item.children.length > 0;
+
+              const ButtonComponent = isActive ? MenuButtonActive : MenuButton;
 
               return (
                 <div key={item.key} className="admin-sidebar-row">
-                  {(() => {
-                    const ButtonComponent = isActive
-                      ? MenuButtonActive
-                      : MenuButton;
-                    return (
-                      <ButtonComponent
-                        type="button"
-                        onClick={() => {
-                          setActiveKey(item.key);
-                          if (toggleSidebar) toggleSidebar();
-                        }}
-                        className={
-                          isActive
-                            ? "admin-sidebar-item admin-sidebar-item--active"
-                            : "admin-sidebar-item"
-                        }
-                      >
-                        <IconWrap>
-                          <item.Icon style={{ fontSize: 20 }} />
-                        </IconWrap>
+                  <ButtonComponent
+                    type="button"
+                    onClick={() => {
+                      if (hasChildren) {
+                        setActiveKey(item.key); // expand/collapse
+                      } else {
+                        setActiveKey(item.key);
+                        if (toggleSidebar) toggleSidebar();
+                      }
+                    }}
+                    className={
+                      isActive
+                        ? "admin-sidebar-item admin-sidebar-item--active"
+                        : "admin-sidebar-item"
+                    }
+                  >
+                    <IconWrap>
+                      <item.Icon style={{ fontSize: 20 }} />
+                    </IconWrap>
 
-                        <span className="admin-sidebar-label">
-                          {item.label}
-                        </span>
+                    <span className="admin-sidebar-label">{item.label}</span>
 
-                        <div className="admin-sidebar-spacer" />
+                    <div className="admin-sidebar-spacer" />
 
-                        {/* Badge placement rules */}
-                        {item.arrow ? (
-                          <div className="admin-sidebar-rightGroup">
-                            {item.badge ? (
-                              <span className="admin-sidebar-badge">
-                                {item.badge.type === "count"
-                                  ? item.badge.value
-                                  : item.badge.type === "hot"
-                                    ? "HOT"
-                                    : "NEW"}
-                              </span>
-                            ) : null}
-                            <span className="admin-sidebar-arrow">›</span>
-                          </div>
-                        ) : (
-                          <div className="admin-sidebar-rightGroup">
-                            {item.badge ? (
-                              <span className="admin-sidebar-badge admin-sidebar-badge--farRight">
-                                {item.badge.type === "count"
-                                  ? item.badge.value
-                                  : item.badge.type === "hot"
-                                    ? "HOT"
-                                    : "NEW"}
-                              </span>
-                            ) : null}
-                          </div>
-                        )}
-                      </ButtonComponent>
-                    );
-                  })()}
+                    {item.arrow ? (
+                      <div className="admin-sidebar-rightGroup">
+                        {item.badge ? (
+                          <span className="admin-sidebar-badge">
+                            <BadgeByType
+                              type={item.badge.type}
+                              value={item.badge.value}
+                            />
+                          </span>
+                        ) : null}
+                        <span className="admin-sidebar-arrow">›</span>
+                      </div>
+                    ) : (
+                      <div className="admin-sidebar-rightGroup">
+                        {item.badge ? (
+                          <span className="admin-sidebar-badge admin-sidebar-badge--farRight">
+                            <BadgeByType
+                              type={item.badge.type}
+                              value={item.badge.value}
+                            />
+                          </span>
+                        ) : null}
+                      </div>
+                    )}
+                  </ButtonComponent>
+
+                  {hasChildren && isActive && (
+                    <div style={{ paddingLeft: 52, marginTop: 4 }}>
+                      {item.children.map((child) => {
+                        const isChildActive = activeKey === child.key;
+                        return (
+                          <button
+                            key={child.key}
+                            type="button"
+                            onClick={() => {
+                              setActiveKey(child.key);
+                              navigate(child.to);
+                              if (toggleSidebar) toggleSidebar();
+                            }}
+                            className={
+                              isChildActive
+                                ? "admin-sidebar-item admin-sidebar-item--active"
+                                : "admin-sidebar-item"
+                            }
+                            style={{
+                              width: "100%",
+                              border: "none",
+                              background: "transparent",
+                              display: "flex",
+                              alignItems: "center",
+                              padding: "8px 10px",
+                              borderRadius: 12,
+                              cursor: "pointer",
+                              color: "inherit",
+                            }}
+                          >
+                            <span
+                              className="admin-sidebar-label"
+                              style={{ fontSize: 13 }}
+                            >
+                              {child.label}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               );
             })}
           </div>
         </div>
 
-        {/* Logout below Blank Page */}
         <div className="admin-sidebar-bottom" style={{ paddingTop: 10 }}>
           <div className="admin-sidebar-row">
             <button

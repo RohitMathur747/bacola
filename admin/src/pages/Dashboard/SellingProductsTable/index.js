@@ -9,7 +9,7 @@ const SellingProducts = () => {
       category: "Men Clothing",
       brand: "Richman",
       image:
-        "https://images.unsplash.com/photo-1520975958225-ffecdb3d8b3f?auto=format&fit=crop&w=96&h=96&q=80",
+        "https://tse4.mm.bing.net/th/id/OIP.-kqHNiOfBui05-XIfOiXPQHaHa?pid=Api&h=220&P=0",
       oldPrice: "₹2,499",
       newPrice: "₹1,999",
       stock: 30,
@@ -25,7 +25,7 @@ const SellingProducts = () => {
       category: "Women Clothing",
       brand: "Zara",
       image:
-        "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=96&h=96&q=80",
+        "https://tse2.mm.bing.net/th/id/OIP.JmlV9U2dxPOc15EEqChL4AHaK-?pid=Api&h=220&P=0",
       oldPrice: "₹3,999",
       newPrice: "₹2,999",
       stock: 25,
@@ -41,7 +41,7 @@ const SellingProducts = () => {
       category: "Men Clothing",
       brand: "Levis",
       image:
-        "https://images.unsplash.com/photo-1520975693414-3e1a8b0ad2fb?auto=format&fit=crop&w=96&h=96&q=80",
+        "https://cdna.lystit.com/photos/nordstrom/beddc379/wrangler-Mid-Wash-Heritage-Pleated-Denim-Jacket.jpeg",
       oldPrice: "₹4,999",
       newPrice: "₹3,799",
       stock: 45,
@@ -57,7 +57,7 @@ const SellingProducts = () => {
       category: "Men Clothing",
       brand: "H&M",
       image:
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=96&h=96&q=80",
+        "https://5.imimg.com/data5/PE/ZV/HA/SELLER-69029071/winter-hoodies-1000x1000.jpg",
       oldPrice: "₹2,899",
       newPrice: "₹2,199",
       stock: 70,
@@ -73,7 +73,7 @@ const SellingProducts = () => {
       category: "Footwear",
       brand: "Nike",
       image:
-        "https://images.unsplash.com/photo-1542291026-04c8b4c59f8a?auto=format&fit=crop&w=96&h=96&q=80",
+        "https://tse4.mm.bing.net/th/id/OIP.mG2NPBze06mUDWj4DhsmKAHaE7?pid=Api&h=220&P=0",
       oldPrice: "₹5,499",
       newPrice: "₹4,499",
       stock: 60,
@@ -89,7 +89,7 @@ const SellingProducts = () => {
       category: "Accessories",
       brand: "Gucci",
       image:
-        "https://images.unsplash.com/photo-1553062407-98eeb64c6b05?auto=format&fit=crop&w=96&h=96&q=80",
+        "https://cdn.notonthehighstreet.com/fs/5d/43/c60e-db02-45c8-9cbf-1977f277a696/original_classic-leather-satchel-bag.jpg",
       oldPrice: "₹8,999",
       newPrice: "₹7,499",
       stock: 20,
@@ -105,7 +105,7 @@ const SellingProducts = () => {
       category: "Women Clothing",
       brand: "Zara",
       image:
-        "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=96&h=96&q=80",
+        "https://i.pinimg.com/originals/b9/bd/4d/b9bd4dd630649b612815dd802c4c5743.jpg",
       oldPrice: "₹3,999",
       newPrice: "₹2,999",
       stock: 25,
@@ -121,7 +121,7 @@ const SellingProducts = () => {
       category: "Men Clothing",
       brand: "Levis",
       image:
-        "https://images.unsplash.com/photo-1520975693414-3e1a8b0ad2fb?auto=format&fit=crop&w=96&h=96&q=80",
+        "https://i5.walmartimages.com/asr/003f87e2-a045-4ce5-aba8-a6921c6c83b1_1.d992bec6238c34837d2ac09916991c74.jpeg",
       oldPrice: "₹4,999",
       newPrice: "₹3,799",
       stock: 45,
@@ -137,7 +137,7 @@ const SellingProducts = () => {
       category: "Men Clothing",
       brand: "H&M",
       image:
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=96&h=96&q=80",
+        "https://images-na.ssl-images-amazon.com/images/I/81-rMStKXlL._AC_UL1500_.jpg",
       oldPrice: "₹2,899",
       newPrice: "₹2,199",
       stock: 70,
@@ -153,7 +153,7 @@ const SellingProducts = () => {
       category: "Footwear",
       brand: "Nike",
       image:
-        "https://images.unsplash.com/photo-1542291026-04c8b4c59f8a?auto=format&fit=crop&w=96&h=96&q=80",
+        "https://tse1.mm.bing.net/th/id/OIP.OrQNzps-E68petSYW2cdHwHaFH?pid=Api&h=220&P=0",
       oldPrice: "₹5,499",
       newPrice: "₹4,499",
       stock: 60,
@@ -169,7 +169,7 @@ const SellingProducts = () => {
       category: "Accessories",
       brand: "Gucci",
       image:
-        "https://images.unsplash.com/photo-1553062407-98eeb64c6b05?auto=format&fit=crop&w=96&h=96&q=80",
+        "https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1715014022/792075_FADJA_1042_002_095_0000_Light-GG-Black-large-duffle-bag.jpg",
       oldPrice: "₹8,999",
       newPrice: "₹7,499",
       stock: 20,

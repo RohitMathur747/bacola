@@ -144,9 +144,9 @@ const Dashboard = () => {
 
         <div className="ecom-breadcrumbs" aria-label="Breadcrumb">
           <span className="ecom-breadcrumb">Home</span>
-          <span className="ecom-breadcrumbSep">{">"}</span>
+          <span className="ecom-breadcrumbSep">{"->"}</span>
           <span className="ecom-breadcrumb">Dashboard</span>
-          <span className="ecom-breadcrumbSep">{">"}</span>
+          <span className="ecom-breadcrumbSep">{"->"}</span>
 
           <span className="ecom-breadcrumb ecom-breadcrumb--active">
             Ecommerce

@@ -127,6 +127,8 @@ export default function SideBar({ sidebarExpanded, toggleSidebar }) {
   const muiTheme = useTheme();
   const navigate = useNavigate();
   const [activeKey, setActiveKey] = useState("dashboard");
+  // Tracks which parent menu (with children) is currently expanded.
+  const [expandedKey, setExpandedKey] = useState(null);
 
   const menuItems = useMemo(
     () => [
@@ -155,11 +157,15 @@ export default function SideBar({ sidebarExpanded, toggleSidebar }) {
         children: [
           { key: "products_list", label: "Product List", to: "/products/list" },
           {
-            key: "products_order",
-            label: "Product Order",
-            to: "/products/order",
+            key: "products_view",
+            label: "Product View",
+            to: "/products/view",
           },
-          { key: "products_view", label: "Product View", to: "/products/view" },
+          {
+            key: "products_upload",
+            label: "Product Upload",
+            to: "/products/upload",
+          },
         ],
       },
 
@@ -208,6 +214,8 @@ export default function SideBar({ sidebarExpanded, toggleSidebar }) {
             ? "rgba(15,23,42,0.72)"
             : "rgba(255,255,255,0.9)",
         backdropFilter: "blur(14px)",
+        // Make sure the scrollbar area is always sized correctly
+        maxHeight: "100vh",
       }}
     >
       <div
@@ -229,9 +237,13 @@ export default function SideBar({ sidebarExpanded, toggleSidebar }) {
                     type="button"
                     onClick={() => {
                       if (hasChildren) {
-                        setActiveKey(item.key); // expand/collapse
+                        setActiveKey(item.key);
+                        setExpandedKey((prev) =>
+                          prev === item.key ? null : item.key,
+                        );
                       } else {
                         setActiveKey(item.key);
+                        setExpandedKey(null);
                         if (toggleSidebar) toggleSidebar();
                       }
                     }}
@@ -275,7 +287,7 @@ export default function SideBar({ sidebarExpanded, toggleSidebar }) {
                     )}
                   </ButtonComponent>
 
-                  {hasChildren && isActive && (
+                  {hasChildren && expandedKey === item.key && (
                     <div style={{ paddingLeft: 52, marginTop: 4 }}>
                       {item.children.map((child) => {
                         const isChildActive = activeKey === child.key;

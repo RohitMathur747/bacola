@@ -620,6 +620,47 @@ body {
   color: #fff;
 }
 
+/* -----------------------------
+   Sidebar scrolling (keep all items visible)
+------------------------------*/
+.admin-sidebar {
+  /* overflow is handled by SidebarRoot inline styles */
+  /* keep layout predictable for scrollbars */
+  box-sizing: border-box;
+}
+
+.admin-sidebar-menu {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 8px;
+  /* subtract bottom area height padding */
+  max-height: calc(100vh - 92px);
+}
+
+/* For Firefox */
+.admin-sidebar-menu {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.55) transparent;
+}
+
+/* For Chrome/Edge/Safari */
+.admin-sidebar-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.admin-sidebar-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.admin-sidebar-menu::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.55);
+  border-radius: 999px;
+}
+
+.admin-sidebar-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.75);
+}
+
 /* =============================
    Ecommerce Dashboard
 =============================*/

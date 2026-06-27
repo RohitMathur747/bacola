@@ -316,7 +316,7 @@ export default function ProductDetails() {
           </div>
 
           <div
-            className="product-gallery-thumbnails"
+            className="product-gallery-thumbnails mt-5 mb-5"
             aria-label="Product thumbnails"
           >
             {product.images.slice(0, 4).map((img, idx) => {
@@ -343,35 +343,37 @@ export default function ProductDetails() {
         <div className="product-gallery-details">
           <div className="product-gallery-details__inner">
             <div className="product-gallery-details__titleBlock">
-              <div className="product-gallery-details__name">
+              <div className="product-gallery-details__name mt-4">
                 {product.name}
               </div>
-              <div className="product-gallery-details__descriptionShort">
+              <div className="product-gallery-details__descriptionShort mt-4 mb-4">
                 {product.description}
               </div>
 
               <div className="product-gallery-details__metaRow">
                 <div className="product-gallery-details__metaItem">
-                  <div className="product-gallery-details__metaLabel">
+                  <div className="product-gallery-details__metaLabel mt-4">
                     Category
                   </div>
-                  <div className="product-gallery-details__metaValue">
+                  <div className="product-gallery-details__metaValue mt-4">
                     {product.category}
                   </div>
                 </div>
                 <div className="product-gallery-details__metaItem">
-                  <div className="product-gallery-details__metaLabel">
+                  <div className="product-gallery-details__metaLabel mt-4">
                     Brand
                   </div>
-                  <div className="product-gallery-details__metaValue">
+                  <div className="product-gallery-details__metaValue mt-4">
                     {product.brand}
                   </div>
                 </div>
               </div>
 
               <div className="product-gallery-details__tagsRow">
-                <div className="product-gallery-details__metaLabel">Tags</div>
-                <div className="product-gallery-details__tags">
+                <div className="product-gallery-details__metaLabel mt-4">
+                  Tags
+                </div>
+                <div className="product-gallery-details__tags mt-4">
                   {product.tags?.map((t) => (
                     <span key={t} className="product-gallery-pill">
                       {t}
@@ -382,31 +384,33 @@ export default function ProductDetails() {
 
               <div className="product-gallery-details__metaRow product-gallery-details__metaRow--grid">
                 <div className="product-gallery-details__metaItem">
-                  <div className="product-gallery-details__metaLabel">
+                  <div className="product-gallery-details__metaLabel mt-4">
                     Color
                   </div>
-                  <div className="product-gallery-details__metaValue">
+                  <div className="product-gallery-details__metaValue mt-4">
                     {product.color}
                   </div>
                 </div>
                 <div className="product-gallery-details__metaItem">
-                  <div className="product-gallery-details__metaLabel">Size</div>
-                  <div className="product-gallery-details__metaValue">
+                  <div className="product-gallery-details__metaLabel mt-4">
+                    Size
+                  </div>
+                  <div className="product-gallery-details__metaValue mt-4">
                     {product.size}
                   </div>
                 </div>
               </div>
 
               <div className="product-gallery-priceRow">
-                <div className="product-gallery-priceOld">
+                <div className="product-gallery-priceOld mt-4">
                   {product.oldPrice}
                 </div>
-                <div className="product-gallery-priceNew">
+                <div className="product-gallery-priceNew mt-4">
                   {product.newPrice}
                 </div>
               </div>
 
-              <div className="product-gallery-stockAndRating">
+              <div className="product-gallery-stockAndRating mt-4 mb-4">
                 <div
                   className={
                     "stock-badge " +
@@ -446,7 +450,7 @@ export default function ProductDetails() {
               </div>
             </div>
 
-            <div className="product-gallery-description">
+            <div className="product-gallery-description mt-4 mb-4">
               <div className="product-gallery-description__heading">
                 Product Description
               </div>

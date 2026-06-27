@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import ProductsList from "./pages/ProductsList";
 import ProductsUpload from "./pages/ProductsUpload";
 import ProductsView from "./pages/ProductsView";
+import ProductDetails from "./pages/ProductDetails";
 import Header from "./components/Header";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -49,6 +50,7 @@ function AppLayout() {
               <Route path="/products/list" element={<ProductsList />} />
               <Route path="/products/order" element={<ProductsUpload />} />
               <Route path="/products/view" element={<ProductsView />} />
+              <Route path="/products/view/:id" element={<ProductDetails />} />
             </Routes>
           </div>
         </div>

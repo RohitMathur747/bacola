@@ -1,6 +1,8 @@
 import React, { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SellingProducts = () => {
+  const navigate = useNavigate();
   const products = [
     {
       uid: "SP-1001",
@@ -8,8 +10,7 @@ const SellingProducts = () => {
       description: "Richman",
       category: "Men Clothing",
       brand: "Richman",
-      image:
-        "https://tse4.mm.bing.net/th/id/OIP.-kqHNiOfBui05-XIfOiXPQHaHa?pid=Api&h=220&P=0",
+      image:"https://www.dilem-reunion.re/8104-home_default/premium-cotton-shirt.jpg",
       oldPrice: "₹2,499",
       newPrice: "₹1,999",
       stock: 30,
@@ -301,6 +302,7 @@ const SellingProducts = () => {
                         className="action-btn action-btn--view"
                         type="button"
                         aria-label={`View ${p.name}`}
+                        onClick={() => navigate(`/products/view/${p.uid}`)}
                       >
                         <span>👁</span>
                       </button>

@@ -48,9 +48,10 @@ function AppLayout() {
 
               {/* Products */}
               <Route path="/products/list" element={<ProductsList />} />
-              <Route path="/products/order" element={<ProductsUpload />} />
+              {/* <Route path="/products/order" element={<ProductsUpload />} /> */}
               <Route path="/products/view" element={<ProductsView />} />
               <Route path="/products/view/:id" element={<ProductDetails />} />
+              <Route path="/products/upload" element={<ProductsUpload />} />
             </Routes>
           </div>
         </div>

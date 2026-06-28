@@ -2426,3 +2426,297 @@ body {
     padding: 10px 12px;
   }
 }
+
+/* =============================
+   Products Upload (/products/upload)
+============================= */
+:root {
+  --pu-bg: transparent;
+  --pu-page-text: rgba(17, 24, 39, 0.95);
+  --pu-muted: rgba(17, 24, 39, 0.6);
+  --pu-border: rgba(17, 24, 39, 0.12);
+  --pu-card-bg: #ffffff;
+  --pu-shadow: 0 18px 50px rgba(16, 24, 40, 0.1);
+  --pu-input-bg: rgba(243, 244, 246, 0.55);
+  --pu-input-border: rgba(17, 24, 39, 0.1);
+  --pu-placeholder: rgba(17, 24, 39, 0.45);
+  --pu-focus: rgba(59, 130, 246, 0.18);
+  --pu-label: rgba(17, 24, 39, 0.92);
+  --pu-icon: rgba(17, 24, 39, 0.65);
+  --pu-sep: rgba(17, 24, 39, 0.35);
+  --pu-active: rgba(17, 24, 39, 0.95);
+  --pu-button-grad-1: #2563eb;
+  --pu-button-grad-2: #1d4ed8;
+  --pu-button-shadow: 0 14px 30px rgba(37, 99, 235, 0.25);
+  --pu-star: rgba(245, 158, 11, 0.9);
+  --pu-star-unselected: rgba(245, 158, 11, 0.25);
+}
+
+[data-theme="dark"] {
+  --pu-page-text: rgba(255, 255, 255, 0.95);
+  --pu-muted: rgba(255, 255, 255, 0.65);
+  --pu-border: rgba(255, 255, 255, 0.12);
+  --pu-card-bg: rgba(15, 23, 42, 0.65);
+  --pu-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+  --pu-input-bg: rgba(255, 255, 255, 0.06);
+  --pu-input-border: rgba(255, 255, 255, 0.14);
+  --pu-placeholder: rgba(255, 255, 255, 0.6);
+  --pu-focus: rgba(59, 130, 246, 0.22);
+  --pu-label: rgba(255, 255, 255, 0.96);
+  --pu-icon: rgba(255, 255, 255, 0.75);
+  --pu-sep: rgba(255, 255, 255, 0.45);
+  --pu-active: rgba(255, 255, 255, 0.95);
+}
+
+.ProductUpload-DashboardContentArea {
+  width: 100%;
+  padding: 18px 0 30px;
+  color: var(--pu-page-text);
+  transition: all 0.3s ease;
+}
+
+.ProductUpload-HeaderTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.ProductUpload-Page-title {
+  margin: 0;
+  font-weight: 1000;
+  color: var(--pu-page-text);
+  transition: all 0.3s ease;
+}
+
+.ProductUpload-Breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  color: var(--pu-muted);
+  font-weight: 900;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.ProductUpload-BreadcrumbItem {
+  color: var(--pu-muted);
+}
+
+.ProductUpload-BreadcrumbItem--active {
+  color: var(--pu-active);
+}
+
+.ProductUpload-BreadcrumbSep {
+  color: var(--pu-sep);
+  font-weight: 900;
+}
+
+.ProductUpload-BreadcrumbIcon {
+  display: inline-flex;
+  color: var(--pu-icon);
+  transition: all 0.3s ease;
+}
+
+.ProductUpload-Card {
+  background: var(--pu-card-bg);
+  border: 1px solid var(--pu-border);
+  border-radius: 20px;
+  box-shadow: var(--pu-shadow);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.ProductUpload-CardHeader {
+  padding: 18px 18px 10px;
+}
+
+.ProductUpload-CardTitle {
+  margin: 0;
+  font-weight: 1000;
+  color: var(--pu-page-text);
+}
+
+.ProductUpload-Form {
+  padding: 8px 18px 18px;
+}
+
+.ProductUpload-FormGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+}
+
+.ProductUpload-Label {
+  color: var(--pu-label);
+  font-weight: 900;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.ProductUpload-Input,
+.ProductUpload-Textarea,
+.ProductUpload-Select {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--pu-input-border);
+  background: var(--pu-input-bg);
+  color: var(--pu-page-text);
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 800;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.ProductUpload-Textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.ProductUpload-Input::placeholder,
+.ProductUpload-Textarea::placeholder {
+  color: var(--pu-placeholder);
+}
+
+.ProductUpload-Input:focus,
+.ProductUpload-Textarea:focus,
+.ProductUpload-Select:focus {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 0 4px var(--pu-focus);
+  background: transparent;
+}
+
+.ProductUpload-Select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(59, 130, 246, 0.9) 50%),
+    linear-gradient(135deg, rgba(59, 130, 246, 0.9) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) calc(1em + 2px),
+    calc(100% - 13px) calc(1em + 2px);
+  background-size:
+    5px 5px,
+    5px 5px;
+  background-repeat: no-repeat;
+}
+
+.ProductUpload-Select option {
+  background: #ffffff;
+  color: #111827;
+}
+
+[data-theme="dark"] .ProductUpload-Select option {
+  background: rgba(15, 23, 42, 0.95);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.ProductUpload-RatingStars {
+  display: flex;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+.ProductUpload-Star {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.ProductUpload-Star svg {
+  color: var(--pu-star-unselected);
+  fill: var(--pu-star-unselected);
+  transition: all 0.3s ease;
+}
+
+.ProductUpload-Star--selected svg {
+  color: var(--pu-star);
+  fill: var(--pu-star);
+}
+
+.ProductUpload-Star:hover svg {
+  color: var(--pu-star);
+  fill: var(--pu-star);
+}
+
+.ProductUpload-SubmitWrap {
+  padding-top: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ProductUpload-PublishButton {
+  border: none;
+  cursor: pointer;
+  border-radius: 16px;
+  height: 52px;
+  padding: 0 20px;
+  min-width: min(420px, 100%);
+  max-width: 520px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(
+    135deg,
+    var(--pu-button-grad-1) 0%,
+    var(--pu-button-grad-2) 100%
+  );
+  color: #ffffff;
+  font-weight: 1000;
+  box-shadow: var(--pu-button-shadow);
+  transition: all 0.3s ease;
+}
+
+.ProductUpload-PublishButton:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+}
+
+.ProductUpload-PublishButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ProductUpload-PublishButtonIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .ProductUpload-DashboardContentArea {
+    padding: 14px 0 24px;
+  }
+
+  .ProductUpload-HeaderTop {
+    align-items: flex-start;
+  }
+
+  .ProductUpload-Breadcrumb {
+    justify-content: flex-start;
+  }
+
+  .ProductUpload-Form {
+    padding: 10px 12px 14px;
+  }
+
+  .ProductUpload-CardHeader {
+    padding: 16px 12px 10px;
+  }
+}

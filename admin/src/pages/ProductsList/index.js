@@ -1,10 +1,11 @@
 import React from "react";
+import SellingProducts from "../Dashboard/SellingProductsTable/index";
 
 export default function ProductsList() {
   return (
     <div style={{ padding: 16 }}>
       <h2>Product List</h2>
-      <p>Placeholder page for Products → Product List.</p>
+      <SellingProducts />
     </div>
   );
 }
